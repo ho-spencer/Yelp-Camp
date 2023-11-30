@@ -1,0 +1,59 @@
+November 30, 2023 - (39) Yelp Camp Intro - Basic CRUD
+    - implemented basic CRUD for Yelp Camp
+    - Campground Model -- /models/campground.js
+    - app.js -- routes for CRUD functionality
+
+    Seeding Campground database
+        - 'seeds' folder
+        - cities.js
+            - list of cities and info
+            - stored in array
+        seedHelpers.js
+            - list of descriptors and places
+            - stored in array
+            - used to create "title" of campground
+                - descriptor + places
+        index.js
+            - run to seed database with initial data
+            - clears database, then populates with data
+
+    Show All
+        - page to list all campgrounds
+        - template (show.ejs) loops through array of campgrounds from database and displays
+
+    Show Details
+        - page to show details of one campground
+        - using findByID()
+        - contains link to edit and delete campground
+
+    Create New Campground
+        - 2 routes
+            - 1 to serve form 
+            - 1 to save data into database
+        - in new.ejs, name attribute for "title" and "location" is set to "campground[title]" and "campground[location]
+                - this syntax ("campground[]") is used for grouping
+                - to access "title" and "location"
+                    - use "req.body.campground"
+                    (if "campground[]" wasn't used and name attribute was just "name="title"", we can acess with just req.body)
+
+    Edit / Update Campground
+        - 2 routes
+            - 1 to serve edit form
+            - 1 to update database
+        - Edit Form
+            - method="POST"
+                - using method override to do a PUT request on the form to update database
+            - input boxes pre-populated with current values
+            - contains button to campground details page
+        - Update
+            - put route (using method override on form)
+            - using findByIdAndUpdate()
+
+    Delete Campground
+        - form with button on show details page
+        - form method="POST"
+            - method override to use delete request
+                - action="/campgrounds/<%= campground._id  %>?_method=DELETE"
+
+        
+    
