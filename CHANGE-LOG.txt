@@ -1,3 +1,96 @@
+December 4, 2023 - (40) Yelp Camp - Adding Basic Styles
+    - added ejs-mate
+    - added boilerplate.ejs
+        - basic boilerplate for every page
+        - created "layouts" folder in "views" folder
+            - added boilerplate.ejs
+    
+    Updated all templates to use boilerplate layout (content now passed into boilerplate layout)
+        - edit.ejs
+        - index.ejs
+        - new.ejs
+        - show.ejs
+
+    Navbar
+        - got navbar code from bootstrap docs (v5.3)
+        - updated classes to make it a dark navbar
+            - "navbar-dark"
+            - "bg-dark"
+        - made navbar sticky (stays on screen when scrolling)
+            - add class "sticky-top"
+        - create a partial with navbar code (navbar.ejs)
+            - created new "partials" directory in "views"
+     
+    Footer     
+        - created footer code
+        - made a footer partial
+        - display footer on bottom of page
+            - using flexbox utilities
+            1. Update <body> of boilerplate
+                - "d-flex" - use display flex
+                - "flex-column" - flexbox is row by default
+                - "vh-100" - view height 100 units (full screen height)
+            2. use "mt-auto" on footer to move it to bottom of page (margin top)
+                - at a minimum, if not enough content, footer will be on bottom of screen
+                - always on bottom of page
+
+    Updated Campground Model
+        - updated "price" value to Number (previously was String)
+        - added "image" property
+            - set to String
+            - passing image url into text field
+
+    Updated Seeds File (index.js)
+        - include image property to seed
+            - image property set to url from an Unsplash image collection
+                - image will be different everytime we load/reload a page
+                - image is not stored (only url of the collection is stored)
+        - added description property
+            - currently set to lorem ipsum
+        - added price property
+            - set to a random number
+    
+    Updated Show All Campgrounds Page (show.ejs)
+        - display image
+        - display price
+        - display description
+
+    Styled "All Campgrounds" Page
+        - list each campground in a card, using bootstrap
+        - card has image, title, description, location, button to view details
+
+    Styled "Add New Campground" Page
+        - use bootstrap to style page
+        - put all content in a grid
+        - centered page title
+        - put form inside a card
+            - card is 6 units wide (column width), but offset by 3 units to be in center of page
+            - default would be 6 left side units
+            - update input's and label's classes with bootstrap values
+
+    Styled "Edit" Page
+        - same bootstrap styling as "Add New" page
+        - form is inside a card
+            - fields pre-populated with current values
+
+    Styled "Show" Page
+        - use bootstrap card to display info
+            - image
+            - title
+            - description
+            - location
+        - add price display
+        - edit/delete button included in card
+            - display for div containing buttons is "display inline" to have buttons next to each other
+
+    Boilerplate.ejs
+        - added bootstrap v5.3
+            - added css link and js bundle script
+            - added some top margin on main container
+                - "mt-5"
+        - included navbar partial
+        - included footer partial
+
 November 30, 2023 - (39) Yelp Camp Intro - Basic CRUD
     - implemented basic CRUD for Yelp Camp
     - Campground Model -- /models/campground.js

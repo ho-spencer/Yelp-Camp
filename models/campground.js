@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;         // create reference to mongoose.Schema f
 // Create Campground Schema
 const CampgroundSchema = new Schema({   // normally "const CampgroundSchema = mongoose.Schema({})"
     title: String,
-    price: String,
+    image: String,
+    price: Number,
     description: String,
     location: String
 })

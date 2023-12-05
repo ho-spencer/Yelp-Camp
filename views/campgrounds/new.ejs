@@ -1,30 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout("layouts/boilerplate.ejs") %>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>New Campground</title>
-    </head>
+    <div class="row">
+        <h1 class="text-center">New Campground</h1>
 
-    <body>
-        <h1>New Campground</h1>
-        <form action="/campgrounds" method="POST">
-            <div>
-                <label for="title">Title</label>
-                <input type="text" name="campground[title]" id="title">
-            </div>
-            <div>
-                <label for="location">Location</label>
-                <input type="location" name="campground[location]" id="location">
-            </div>
+        <!-- 6 unit width column, offset by 3 to use the middle (instead of 6 left units)-->
+        <div class="col-6 offset-3">
+            <form action="/campgrounds" method="POST">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control" name="campground[title]" id="title">
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location</label>
+                    <input type="text" class="form-control" name="campground[location]" id="location">
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image Url</label>
+                    <input type="text" class="form-control" name="campground[image]" id="image">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">Campground Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">$</span>
+                        <input type="text" class="form-control" id="price" name="campground[price]" placeholder="0.00"
+                            aria-label="price" aria-describedby="price-label">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea type="text" class="form-control" name="campground[description]"
+                        id="description"></textarea>
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-success">Add Campground</button>
+                </div>
 
-            <button>Add Campground</button>
-        </form>
-
-        <br>
-        <a href="/campgrounds">All Campgrounds</a>
-
-    </body>
-
-</html>
+            </form>
+        </div>
+    </div>
