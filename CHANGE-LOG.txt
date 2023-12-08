@@ -1,3 +1,54 @@
+December 7, 2023 - (43) Yelp Camp - Errors and Validating Data
+    app.js
+        - added error handling
+        - created ExpressError.js and catchAsync.js
+            - added wrapper function (catchAsync) to any async functions
+        - added generic error handler
+            - renders error.ejs (error template)
+            - sets status code based on error
+            - if no status code or message, default values are set
+        - add Joi validation
+            - add function validateCampground to validate with Joi schema
+                - included function on 'new' and 'edit' campground routes
+    
+    schemas.js
+        - file to store Joi schemas (will have multiple schemas in future)
+        - moved Joi "campgroundSchema" to this file
+        
+    ExpressError.js
+        - created error class to handle errors
+        - displays status code and error message
+        - display error stack trace
+
+    catchAsync.js
+        - created wrapper function to catch async errors
+    
+    error.ejs
+        - created template for errors
+        - using Bootstrap's Alert component code
+
+    new.ejs
+        - updated form to use bootstrap validation
+            - added "required" attribute on form inputs
+            - added "novalidate" attribute on form element
+            - added class="validated-form" on form element
+                - for javascript validation code
+            - added javascript code
+                - from bootstrap docs
+                - prevents form submission if there are invalid form fields
+                - code placed in boilerplate.ejs
+            - added <div> with class="valid-feedback"
+                - provides live feedback if user submits form with errors, then updates fields
+                - inserted below each from input
+
+    edit.ejs
+        - updated form to use bootstrap validation
+            - same updates as new.ejs
+
+    boilerplate.ejs
+        - added javascript code for form validation
+
+
 December 4, 2023 - (40) Yelp Camp - Adding Basic Styles
     - added ejs-mate
     - added boilerplate.ejs
@@ -90,6 +141,7 @@ December 4, 2023 - (40) Yelp Camp - Adding Basic Styles
                 - "mt-5"
         - included navbar partial
         - included footer partial
+
 
 November 30, 2023 - (39) Yelp Camp Intro - Basic CRUD
     - implemented basic CRUD for Yelp Camp

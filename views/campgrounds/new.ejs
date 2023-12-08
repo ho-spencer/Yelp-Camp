@@ -5,36 +5,49 @@
 
         <!-- 6 unit width column, offset by 3 to use the middle (instead of 6 left units)-->
         <div class="col-6 offset-3">
-            <form action="/campgrounds" method="POST">
+            <form action="/campgrounds" method="POST" class="validated-form" novalidate>
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" name="campground[title]" id="title">
+                    <input type="text" class="form-control" name="campground[title]" id="title" required>
+                    <div class="valid-feedback">
+                        Valid Input!
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="location" class="form-label">Location</label>
-                    <input type="text" class="form-control" name="campground[location]" id="location">
+                    <input type="text" class="form-control" name="campground[location]" id="location" required>
+                    <div class="valid-feedback">
+                        Valid Input!
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Image Url</label>
-                    <input type="text" class="form-control" name="campground[image]" id="image">
+                    <input type="text" class="form-control" name="campground[image]" id="image" required>
+                    <div class="valid-feedback">
+                        Valid Input!
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="price">Campground Price</label>
                     <div class="input-group">
                         <span class="input-group-text" id="price-label">$</span>
                         <input type="text" class="form-control" id="price" name="campground[price]" placeholder="0.00"
-                            aria-label="price" aria-describedby="price-label">
+                            aria-label="price" aria-describedby="price-label" required>
+                        <div class="valid-feedback">
+                            Valid Input!
+                        </div>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
-                    <textarea type="text" class="form-control" name="campground[description]"
-                        id="description"></textarea>
+                    <textarea type="text" class="form-control" name="campground[description]" id="description"
+                        required></textarea>
+                    <div class="valid-feedback">
+                        Valid Input!
+                    </div>
                 </div>
                 <div class="mb-3">
                     <button type="submit" class="btn btn-success">Add Campground</button>
-                </div>
-
-            </form>
+                </div </form>
         </div>
     </div>
