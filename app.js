@@ -7,6 +7,7 @@ const catchAsync = require("./utilities/catchAsync.js");        // require async
 const ExpressError = require("./utilities/ExpressError.js");    // require ExpressError class
 const { campgroundSchema } = require("./schemas.js");           // require Joi Schema created - campgroundSchema
 const Campground = require("./models/campground.js");           // require Campground model
+const Review = require("./models/review.js");                   // require Review model
 
 
 mongoose.connect("mongodb://127.0.0.1:27017/yelp-camp")
@@ -89,7 +90,16 @@ app.delete("/campgrounds/:id", catchAsync(async (req, res, next) => {
     res.redirect("/campgrounds");
 }));
 
-
+// Route to send data from a review
+app.post("/campgrounds/:id/reviews", catchAsync(async (req, res) => {
+    const { id } = req.params;
+    const campground = await Campground.findById(id);
+    const review = new Review(req.body.review);         // create review
+    campground.reviews.push(review);                     // push review onto 'reviews' array
+    await review.save();
+    await campground.save();
+    res.redirect(`/campgrounds/${campground._id}`);
+}));
 
 // Error Handling
 app.all("*", (req, res, next) => {

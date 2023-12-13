@@ -1,12 +1,18 @@
 December 13, 2023 - (46) Yelp Camp - Adding the Reviews Model
+    app.js
+        - added a route to submit a review for a specific campground
+    
     show.ejs
         - added review form below campground details (using bootstrap)
             - form includes "range" input - campground rating
-            - text area to write a review 
+            - text area to write a review
+        - set form action to "/campgrounds/<%= campground._id  %>/reviews"
+        - updated form method to "POST"
     
     review.js
         - created the "Review" model for reviews on each Campground
         - will store ObjectID's of the reviews in a 'reviews' array in Campground Model
+        - fixed line to export Review model
     
     campground.js
         - added 'reviews' property
