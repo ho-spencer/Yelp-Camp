@@ -1,4 +1,12 @@
-December 14, 2023 - (46) Yelp Camp - Displaying Reviews
+December 13, 2023 - (46) Yelp Camp - Styling Reviews
+    Styled reviews on campground details page.
+
+    show.ejs
+        - put each review in a card (using boostrap class)
+        - reorganized campground details and campground reviews display
+            - each section now takes up 6 units of the column
+
+December 13, 2023 - (46) Yelp Camp - Displaying Reviews
     - Add section on campground show page to display reviews for that campground.
 
     app.js
@@ -9,6 +17,7 @@ December 14, 2023 - (46) Yelp Camp - Displaying Reviews
 
     show.ejs
         -  added loop to loop through the campground's reviews array and display reviews and rating with the campground details
+
 
 December 13, 2023 - (46) Yelp Camp - Validating Reviews
     app.js
