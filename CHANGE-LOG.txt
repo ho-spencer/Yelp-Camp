@@ -1,3 +1,12 @@
+December 13, 2023 - (46) Yelp Camp - Deleting Reviews (cont.) / Deleting Campground Middleware
+    Summary: Deleting a campground now deletes all reviews associated with that specific campground
+
+    campground.js
+        - added Campground deletion middleware to delete associated reviews if campground is deleted
+            - using a .post() middleware
+                - access to the document (campground) is only available to the function AFTER the campground is found and deleted
+
+
 December 13, 2023 - (46) Yelp Camp - Deleting Reviews
     app.js
         - added a delete route to delete reviews
