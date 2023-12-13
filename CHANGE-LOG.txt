@@ -1,3 +1,20 @@
+December 13, 2023 - (46) Yelp Camp - Validating Reviews
+    app.js
+        - added validateReview
+            - middleware to validate the review form data
+            - added middleware function to the post route for submitting review form data
+    
+    show.ejs
+        - "required" text area input (review form)
+        - set review form to NOT use HTML validation
+            - set "novalidate" on review form element
+            - set added "validated-form" to form class
+                - allows JS in boilerplate to look for this class, then add the validation logic
+    
+    schemas.js
+        - added JOI schema to validate review form data
+
+
 December 13, 2023 - (46) Yelp Camp - Adding the Reviews Model
     app.js
         - added a route to submit a review for a specific campground

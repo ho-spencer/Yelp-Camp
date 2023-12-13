@@ -2,12 +2,12 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
-const ejsMate  = require("ejs-mate");                           // require ejs-mate
-const catchAsync = require("./utilities/catchAsync.js");        // require async catch function
-const ExpressError = require("./utilities/ExpressError.js");    // require ExpressError class
-const { campgroundSchema } = require("./schemas.js");           // require Joi Schema created - campgroundSchema
-const Campground = require("./models/campground.js");           // require Campground model
-const Review = require("./models/review.js");                   // require Review model
+const ejsMate  = require("ejs-mate");                                   // require ejs-mate
+const catchAsync = require("./utilities/catchAsync.js");                // require async catch function
+const ExpressError = require("./utilities/ExpressError.js");            // require ExpressError class
+const { campgroundSchema, reviewSchema } = require("./schemas.js");     // require Joi schemas (validation)
+const Campground = require("./models/campground.js");                   // require Campground model
+const Review = require("./models/review.js");                           // require Review model
 
 
 mongoose.connect("mongodb://127.0.0.1:27017/yelp-camp")
@@ -34,7 +34,21 @@ const validateCampground = (req, res, next) => {
     if (error) {
         const msg = error.details.map(el => el.message).join(",");
         throw new ExpressError(400, msg);
-    }    
+    }
+    else {
+        next();
+    }
+}
+
+const validateReview = (req, res, next) => {
+    const { error } = reviewSchema.validate(req.body);
+    if (error) {
+        const msg = error.details.map(el => el.message).join(",");
+        throw new ExpressError(400, msg);
+    }
+    else {
+        next();
+    } 
 }
 
 app.get("/", (req, res) => {
@@ -91,7 +105,7 @@ app.delete("/campgrounds/:id", catchAsync(async (req, res, next) => {
 }));
 
 // Route to send data from a review
-app.post("/campgrounds/:id/reviews", catchAsync(async (req, res) => {
+app.post("/campgrounds/:id/reviews", validateReview, catchAsync(async (req, res) => {
     const { id } = req.params;
     const campground = await Campground.findById(id);
     const review = new Review(req.body.review);         // create review
