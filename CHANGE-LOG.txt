@@ -1,3 +1,12 @@
+December 13, 2023 - (46) Yelp Camp - Adding the Reviews Model
+    review.js
+        - created the "Review" model for reviews on each Campground
+        - will store ObjectID's of the reviews in a 'reviews' array in Campground Model
+    
+    campground.js
+        - added 'reviews' property
+            - array of the Review's ObjectIDs
+
 December 7, 2023 - (43) Yelp Camp - Errors and Validating Data
     app.js
         - added error handling
