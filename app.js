@@ -51,67 +51,77 @@ const validateReview = (req, res, next) => {
     } 
 }
 
+// HOME PAGE
 app.get("/", (req, res) => {
     res.render("home.ejs");
 });
 
-// Index - list all campgrounds
+// LIST ALL CAMPGROUNDS (campground index)
 app.get("/campgrounds", catchAsync(async (req, res, next) => {
     const campgrounds = await Campground.find({});
     res.render("campgrounds/index.ejs", { campgrounds });
 }));
 
-// Add New Campground - serve form
+// ADD NEW CAMPGROUND - serve form
 app.get("/campgrounds/new", (req, res) => {
     res.render("campgrounds/new.ejs");
 });
 
-// Add New Campground - save info from form to database
+// ADD NEW CAMPGROUND - update data
 app.post("/campgrounds", validateCampground, catchAsync(async (req, res, next) => {
     const newCampground = new Campground(req.body.campground);
     await newCampground.save();
     res.redirect(`/campgrounds/${newCampground._id}`);
 }));
 
-// Edit an Item - serve edit form
+// EDIT A CAMPGROUND - serve form
 app.get("/campgrounds/:id/edit", catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const campground = await Campground.findById(id);
     res.render("campgrounds/edit.ejs", { campground });
 }));
 
+// EDIT A CAMPGROUND - update data
 app.put("/campgrounds/:id", validateCampground, catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const campground = await Campground.findByIdAndUpdate(id, {...req.body.campground}, { runValidators: true, new: true });
     res.redirect(`/campgrounds/${campground._id}`);
 }));
 
-// Show Details - show details of one campground (by ID)
+// SHOW CAMPGROUND DETAILS
 app.get("/campgrounds/:id", catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const campground = await Campground.findById(id).populate("reviews");
     res.render("campgrounds/show.ejs", { campground });
 }));
 
-// Delete Campground
+// DELETE CAMPGROUND
 app.delete("/campgrounds/:id", catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const deletedCampground = await Campground.findByIdAndDelete(id);
     res.redirect("/campgrounds");
 }));
 
-// Route to send data from a review
+// CREATE REVIEW
 app.post("/campgrounds/:id/reviews", validateReview, catchAsync(async (req, res) => {
     const { id } = req.params;
     const campground = await Campground.findById(id);
-    const review = new Review(req.body.review);         // create review
+    const review = new Review(req.body.review);          // create review
     campground.reviews.push(review);                     // push review onto 'reviews' array
     await review.save();
     await campground.save();
     res.redirect(`/campgrounds/${campground._id}`);
 }));
 
-// Error Handling
+// DELETRE REVIEWS
+app.delete("/campgrounds/:id/reviews/:reviewId", catchAsync(async (req, res) => {
+    const { id, reviewId } = req.params;
+    const campground = await Campground.findByIdAndUpdate(id, { $pull: { reviews: reviewId }});
+    const review = await Review.findByIdAndDelete(reviewId);
+    res.redirect(`/campgrounds/${id}`);
+}))
+
+// ERROR HANDLING
 app.all("*", (req, res, next) => {
     next(new ExpressError(404, "Page Not Found"));
 })

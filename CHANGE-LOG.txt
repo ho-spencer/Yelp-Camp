@@ -1,3 +1,17 @@
+December 13, 2023 - (46) Yelp Camp - Deleting Reviews
+    app.js
+        - added a delete route to delete reviews
+            - delete review and remove review's objectID from campground reviews array
+        - route needs ID from campground and review
+            - path: "/campgrounds/:id/reviews/:reviewId"
+        - use mongo operator "$pull" to remove the review's ObjectID from the Campground's reviews array
+
+    show.ejs
+        - added form (only 1 button) to delete a review
+            - action="/campgrounds/<%= campground._id  %>/reviews/<%= review._id  %>?_method=DELETE"
+                - using method override to setup DELETE (form set to POST)
+
+
 December 13, 2023 - (46) Yelp Camp - Styling Reviews
     Styled reviews on campground details page.
 
@@ -5,6 +19,7 @@ December 13, 2023 - (46) Yelp Camp - Styling Reviews
         - put each review in a card (using boostrap class)
         - reorganized campground details and campground reviews display
             - each section now takes up 6 units of the column
+
 
 December 13, 2023 - (46) Yelp Camp - Displaying Reviews
     - Add section on campground show page to display reviews for that campground.
