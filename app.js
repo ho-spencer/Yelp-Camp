@@ -68,10 +68,6 @@ app.get("/campgrounds/new", (req, res) => {
 
 // Add New Campground - save info from form to database
 app.post("/campgrounds", validateCampground, catchAsync(async (req, res, next) => {
-    // if (!req.body.campground){
-    //     throw new ExpressError(400, "Invalid Campground Data");
-    // }
-    
     const newCampground = new Campground(req.body.campground);
     await newCampground.save();
     res.redirect(`/campgrounds/${newCampground._id}`);
@@ -93,7 +89,7 @@ app.put("/campgrounds/:id", validateCampground, catchAsync(async (req, res, next
 // Show Details - show details of one campground (by ID)
 app.get("/campgrounds/:id", catchAsync(async (req, res, next) => {
     const { id } = req.params;
-    const campground = await Campground.findById(id);
+    const campground = await Campground.findById(id).populate("reviews");
     res.render("campgrounds/show.ejs", { campground });
 }));
 

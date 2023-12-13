@@ -1,3 +1,15 @@
+December 14, 2023 - (46) Yelp Camp - Displaying Reviews
+    - Add section on campground show page to display reviews for that campground.
+
+    app.js
+        - updated campground show route
+            - populated 'reviews' array --> .populate("reviews")
+                - need this to access review's data in show page
+                - only able to access ObjectID before populating
+
+    show.ejs
+        -  added loop to loop through the campground's reviews array and display reviews and rating with the campground details
+
 December 13, 2023 - (46) Yelp Camp - Validating Reviews
     app.js
         - added validateReview
