@@ -25,10 +25,12 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 // Middleware
-app.use(express.urlencoded({ extended: true }));    // access post request's req.body
-app.use(methodOverride('_method'));                 // method override to use put request on form
-app.use("/campgrounds", campgrounds);               // set prefix, use campgrounds routes
-app.use("/campgrounds/:id/reviews", reviews);       // set prefix, use reviews routes
+app.use(express.urlencoded({ extended: true }));            // access post request's req.body
+app.use(methodOverride('_method'));                         // method override to use put request on form
+app.use(express.static(path.join(__dirname, "public")));    // serve "public" directory (for static assets)
+app.use("/campgrounds", campgrounds);                       // set prefix, use campgrounds routes
+app.use("/campgrounds/:id/reviews", reviews);               // set prefix, use reviews routes
+
 
 // HOME PAGE
 app.get("/", (req, res) => {

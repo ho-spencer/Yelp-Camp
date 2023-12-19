@@ -1,3 +1,13 @@
+=======================================================
+December 19, 2023
+    (49) Yelp Camp - Serving Static Assets
+=======================================================
+    validateForms.js
+        - moved bootstrap form validation script from boilerplate.ejs
+            - required script in boilerplate.ejs
+        
+
+
 ===============================================================
 December 19, 2023
     (49) Yelp Camp - Restructure Campground and Review Routes
