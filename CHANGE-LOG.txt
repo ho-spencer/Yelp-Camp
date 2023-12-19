@@ -1,4 +1,35 @@
-December 13, 2023 - (46) Yelp Camp - Deleting Reviews (cont.) / Deleting Campground Middleware
+===============================================================
+December 19, 2023
+    (49) Yelp Camp - Restructure Campground and Review Routes
+===============================================================
+    campgrounds.js
+        - Moved campground routes to /routes/campgrounds.js
+            - using Express Router
+            - updated routes accordingly (ex: app.get() => router.get())
+            - set up routes middleware (set prefix and routes to use)
+                - "/campgrounds" set as prefix
+                - removed "/campgrounds" from routes path (now using prefix instead)
+        - update file paths for requiring utilities / models
+        - moved validateCampground middleware to campgrounds.js
+    
+     reviews.js
+        - Moved reviews routes to /routes/reviews.js
+            - using Express Router
+            - updated routes accordingly (ex: app.get() => router.get())
+            - set up routes middleware (set prefix and routes to use)
+                - "/campgrounds/:id/reviews" set as prefix
+                - removed "/campgrounds" from routes path (now using prefix instead)
+            - const router = express.Router({ mergeParams: true });
+                - pass in option "mergeParams" to access params from main app.js, while in reviews.js
+                - review routes need to access ":id" from the routes middleware in app.js
+                    - Express Router keeps params separate
+
+
+=======================================================
+December 13, 2023
+    (46) Yelp Camp - Deleting Reviews (cont.)
+                   - Deleting Campground Middleware
+=======================================================
     Summary: Deleting a campground now deletes all reviews associated with that specific campground
 
     campground.js
@@ -7,7 +38,10 @@ December 13, 2023 - (46) Yelp Camp - Deleting Reviews (cont.) / Deleting Campgro
                 - access to the document (campground) is only available to the function AFTER the campground is found and deleted
 
 
-December 13, 2023 - (46) Yelp Camp - Deleting Reviews
+=======================================================
+December 13, 2023
+    (46) Yelp Camp - Deleting Reviews
+=======================================================
     app.js
         - added a delete route to delete reviews
             - delete review and remove review's objectID from campground reviews array
@@ -21,7 +55,10 @@ December 13, 2023 - (46) Yelp Camp - Deleting Reviews
                 - using method override to setup DELETE (form set to POST)
 
 
-December 13, 2023 - (46) Yelp Camp - Styling Reviews
+=======================================================
+December 13, 2023
+    (46) Yelp Camp - Styling Reviews
+=======================================================
     Styled reviews on campground details page.
 
     show.ejs
@@ -30,7 +67,10 @@ December 13, 2023 - (46) Yelp Camp - Styling Reviews
             - each section now takes up 6 units of the column
 
 
-December 13, 2023 - (46) Yelp Camp - Displaying Reviews
+=======================================================
+December 13, 2023
+    (46) Yelp Camp - Displaying Reviews
+=======================================================
     - Add section on campground show page to display reviews for that campground.
 
     app.js
@@ -43,7 +83,10 @@ December 13, 2023 - (46) Yelp Camp - Displaying Reviews
         -  added loop to loop through the campground's reviews array and display reviews and rating with the campground details
 
 
-December 13, 2023 - (46) Yelp Camp - Validating Reviews
+=======================================================
+December 13, 2023
+    (46) Yelp Camp - Validating Reviews
+=======================================================
     app.js
         - added validateReview
             - middleware to validate the review form data
@@ -60,7 +103,10 @@ December 13, 2023 - (46) Yelp Camp - Validating Reviews
         - added JOI schema to validate review form data
 
 
-December 13, 2023 - (46) Yelp Camp - Adding the Reviews Model
+=======================================================
+December 13, 2023
+    (46) Yelp Camp - Adding the Reviews Model
+=======================================================
     app.js
         - added a route to submit a review for a specific campground
     
@@ -80,7 +126,11 @@ December 13, 2023 - (46) Yelp Camp - Adding the Reviews Model
         - added 'reviews' property
             - array of the Review's ObjectIDs
 
-December 7, 2023 - (43) Yelp Camp - Errors and Validating Data
+
+=======================================================
+December 7, 2023
+    (43) Yelp Camp - Errors and Validating Data
+=======================================================
     app.js
         - added error handling
         - created ExpressError.js and catchAsync.js
@@ -131,7 +181,10 @@ December 7, 2023 - (43) Yelp Camp - Errors and Validating Data
         - added javascript code for form validation
 
 
-December 4, 2023 - (40) Yelp Camp - Adding Basic Styles
+=======================================================
+December 4, 2023
+    (40) Yelp Camp - Adding Basic Styles
+=======================================================
     - added ejs-mate
     - added boilerplate.ejs
         - basic boilerplate for every page
@@ -225,7 +278,10 @@ December 4, 2023 - (40) Yelp Camp - Adding Basic Styles
         - included footer partial
 
 
-November 30, 2023 - (39) Yelp Camp Intro - Basic CRUD
+=======================================================
+November 30, 2023
+    (39) Yelp Camp Intro - Basic CRUD
+=======================================================
     - implemented basic CRUD for Yelp Camp
     - Campground Model -- /models/campground.js
     - app.js -- routes for CRUD functionality
@@ -281,6 +337,3 @@ November 30, 2023 - (39) Yelp Camp Intro - Basic CRUD
         - form method="POST"
             - method override to use delete request
                 - action="/campgrounds/<%= campground._id  %>?_method=DELETE"
-
-        
-    
