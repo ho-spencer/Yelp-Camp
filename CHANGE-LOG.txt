@@ -1,5 +1,21 @@
 =======================================================
 December 19, 2023
+    (49) Yelp Camp - Flash Setup
+=======================================================
+    Add Flash to flash different messages to user.
+
+    app.js
+        - added connect-flash
+        - add Flash middleware to allow access to flash messages from all routes
+            - using res.locals
+            - added "success" and "error" so templates will have access to these messages
+
+    campgrounds.js
+        - ROUTE TO ADD CAMPGROUND: added a "success" flash message
+
+
+=======================================================
+December 19, 2023
     (49) Yelp Camp - Configuring Session
 =======================================================
     Adding Express Session to use Flash and for future authentication.

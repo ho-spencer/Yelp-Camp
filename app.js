@@ -5,6 +5,7 @@ const methodOverride = require("method-override");
 const ejsMate  = require("ejs-mate");                                   // require ejs-mate
 const ExpressError = require("./utilities/ExpressError.js");            // require ExpressError class
 const session = require("express-session");                             // require Express Session
+const flash = require("connect-flash");                                 // require Flash
 
 // Routes
 const campgrounds = require("./routes/campgrounds.js");                 // require campgrounds routes
@@ -42,10 +43,18 @@ const sessionConfig = {
     }
 };
 app.use(session(sessionConfig));
+app.use(flash());
 
-app.use("/campgrounds", campgrounds);                       // set prefix, use campgrounds routes
-app.use("/campgrounds/:id/reviews", reviews);               // set prefix, use reviews routes
+// Flash Middleware
+app.use((req, res, next) => {
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    next();
+})
 
+// Route Handlers
+app.use("/campgrounds", campgrounds);               // set prefix, use campgrounds routes
+app.use("/campgrounds/:id/reviews", reviews);       // set prefix, use reviews routes
 
 
 // HOME PAGE
