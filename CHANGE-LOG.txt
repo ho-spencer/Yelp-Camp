@@ -1,5 +1,28 @@
 =======================================================
 December 19, 2023
+    (49) Yelp Camp - Flash Success & Error Partials
+=======================================================
+    Setup partials for Flash Success and Flash Error
+
+    flash.ejs
+        - created flash partial
+        - added logic to flash success message if conditions are met
+        - added logic to flash error message if conditions are met
+
+    boilerplate.ejs
+        - update to include (use) flash partial
+
+    campgrounds.js
+        - added success flash to campground create route and edit route
+        - Campgrounds Show Details and Edit Route - added Error Flash
+            - flashes message if campground does not exist (user tries to access invalid ID/show page link)
+
+    reviews.js
+        - added success flash to reviews create route and delete route
+
+
+=======================================================
+December 19, 2023
     (49) Yelp Camp - Flash Setup
 =======================================================
     Add Flash to flash different messages to user.
