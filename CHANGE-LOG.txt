@@ -1,12 +1,24 @@
 =======================================================
 December 19, 2023
+    (49) Yelp Camp - Configuring Session
+=======================================================
+    Adding Express Session to use Flash and for future authentication.
+
+    app.js
+        - added express-session 
+            - app now sends cookie with session ID
+            - setup session config object (sessionConfig)
+                - included cookie options: httpOnly, expires, maxAge
+        
+
+=======================================================
+December 19, 2023
     (49) Yelp Camp - Serving Static Assets
 =======================================================
     validateForms.js
         - moved bootstrap form validation script from boilerplate.ejs
             - required script in boilerplate.ejs
         
-
 
 ===============================================================
 December 19, 2023

@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const methodOverride = require("method-override");
 const ejsMate  = require("ejs-mate");                                   // require ejs-mate
 const ExpressError = require("./utilities/ExpressError.js");            // require ExpressError class
+const session = require("express-session");                             // require Express Session
 
 // Routes
 const campgrounds = require("./routes/campgrounds.js");                 // require campgrounds routes
@@ -28,8 +29,23 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));            // access post request's req.body
 app.use(methodOverride('_method'));                         // method override to use put request on form
 app.use(express.static(path.join(__dirname, "public")));    // serve "public" directory (for static assets)
+
+// Session Config
+const sessionConfig = { 
+    secret: "superfakesecret",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+};
+app.use(session(sessionConfig));
+
 app.use("/campgrounds", campgrounds);                       // set prefix, use campgrounds routes
 app.use("/campgrounds/:id/reviews", reviews);               // set prefix, use reviews routes
+
 
 
 // HOME PAGE
