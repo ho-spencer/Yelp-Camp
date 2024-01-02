@@ -1,3 +1,27 @@
+==============================================================
+January 2, 2024
+    (51) Yelp Camp - Auth User Model and Configure Passport
+==============================================================
+    Using Passport.js for authentication in Yelp Camp.
+        - Passport
+        - passport-local
+        - passport-local-mongoose
+
+    User.js
+        - User Model
+        - UserSchema
+            - added email field
+            - UserSchema.plugin(passportLocalMongoose)
+                - using Passport to add username and password field
+    
+    app.js
+        - configured passport
+            - included required middleware (initialze(), session())
+            - included static methods from Passport to serialize / deserialize users from the session ("store / unstore" in the session)
+                - passport.serializeUser()
+                - passport.deserializeUser()
+            
+    
 =======================================================
 December 19, 2023
     (49) Yelp Camp - Flash Success & Error Partials

@@ -6,11 +6,16 @@ const ejsMate  = require("ejs-mate");                                   // requi
 const ExpressError = require("./utilities/ExpressError.js");            // require ExpressError class
 const session = require("express-session");                             // require Express Session
 const flash = require("connect-flash");                                 // require Flash
+const passport = require("passport");                                   // require Passport
+const LocalStrategy = require("passport-local");                        // require Local-Passport
+const User = require("./models/user.js");                              // require User model
+
 
 // Routes
 const campgrounds = require("./routes/campgrounds.js");                 // require campgrounds routes
 const reviews = require("./routes/reviews.js");                         // require reviews routes
 
+// Connect to DB
 mongoose.connect("mongodb://127.0.0.1:27017/yelp-camp")
     .then(() => {
         console.log("MONGO CONNECTION OPEN");
@@ -20,8 +25,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/yelp-camp")
         console.log(err);
     })
 
-const app = express();
 
+const app = express();
 app.engine("ejs", ejsMate);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -31,7 +36,6 @@ app.use(express.urlencoded({ extended: true }));            // access post reque
 app.use(methodOverride('_method'));                         // method override to use put request on form
 app.use(express.static(path.join(__dirname, "public")));    // serve "public" directory (for static assets)
 
-// Session Config
 const sessionConfig = { 
     secret: "superfakesecret",
     resave: false,
@@ -44,6 +48,13 @@ const sessionConfig = {
 };
 app.use(session(sessionConfig));
 app.use(flash());
+
+app.use(passport.initialize());                             // middleware to initialize Passport
+app.use(passport.session());                                // middleware to allow peristent login
+passport.use(new LocalStrategy(User.authenticate()));       // tell Passport to use the "local strategy" we set up
+passport.serializeUser(User.serializeUser());               // serialze Users into the session (static method from Passport)
+passport.deserializeUser(User.deserializeUser());           // deserialze Users into the session (static method from Passport)
+
 
 // Flash Middleware
 app.use((req, res, next) => {
