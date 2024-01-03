@@ -1,5 +1,20 @@
 =======================================================
 January 3, 2024
+    (51) Yelp Camp - currentUser Helper
+=======================================================
+    Show/Hide links based on if user is logged in or not.
+        - Logged Out: show login & register links (hide logout)
+        - Logged In: show logout button (hide login / register)
+
+    app.js
+        - added req.user (user auto added to req object by Passport) to res.locals
+            - variable name: currentUser --> res.locals.currentUser
+            - currentUser can be accessed from any route/template
+            - used to determine if a user is logged in or not
+
+
+=======================================================
+January 3, 2024
     (51) Yelp Camp - Logout
 =======================================================
     Added Logout logic.
@@ -13,7 +28,7 @@ January 3, 2024
         - added login, register, and logout buttons to nav bar
             - aligned on right side of page
 
-            
+
 =======================================================
 January 3, 2024
     (51) Yelp Camp - Login

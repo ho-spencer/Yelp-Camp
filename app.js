@@ -56,18 +56,18 @@ passport.use(new LocalStrategy(User.authenticate()));       // tell Passport to 
 passport.serializeUser(User.serializeUser());               // serialze Users into the session (static method from Passport)
 passport.deserializeUser(User.deserializeUser());           // deserialze Users into the session (static method from Passport)
 
-
-// Flash Middleware
+// Global Items
 app.use((req, res, next) => {
-    res.locals.success = req.flash("success");
-    res.locals.error = req.flash("error");
+    res.locals.success = req.flash("success");              // allow req.flash("success") to be accessed from any route/template as "success"
+    res.locals.error = req.flash("error");                  // allow req.flash("error") to be accessed from any route/template as "error"
+    res.locals.currentUser = req.user;                      // allow req.user to be accessed from any route/template as "currentUser"
     next();
 })
 
 // Route Handlers
 app.use("/campgrounds", campgroundRoutes);               // set prefix, use campgrounds routes
 app.use("/campgrounds/:id/reviews", reviewRoutes);       // set prefix, use reviews routes
-app.use("/", userRoutes);                                // set preicx, use users routes
+app.use("/", userRoutes);                                // set prefix, use users routes
 
 
 // HOME PAGE
