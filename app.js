@@ -8,12 +8,13 @@ const session = require("express-session");                             // requi
 const flash = require("connect-flash");                                 // require Flash
 const passport = require("passport");                                   // require Passport
 const LocalStrategy = require("passport-local");                        // require Local-Passport
-const User = require("./models/user.js");                              // require User model
+const User = require("./models/user.js");                               // require User model
 
 
 // Routes
-const campgrounds = require("./routes/campgrounds.js");                 // require campgrounds routes
-const reviews = require("./routes/reviews.js");                         // require reviews routes
+const campgroundRoutes = require("./routes/campgrounds.js");                 // require campgrounds routes
+const reviewRoutes = require("./routes/reviews.js");                         // require reviews routes
+const userRoutes = require("./routes/users.js");                             // require users routes
 
 // Connect to DB
 mongoose.connect("mongodb://127.0.0.1:27017/yelp-camp")
@@ -64,8 +65,9 @@ app.use((req, res, next) => {
 })
 
 // Route Handlers
-app.use("/campgrounds", campgrounds);               // set prefix, use campgrounds routes
-app.use("/campgrounds/:id/reviews", reviews);       // set prefix, use reviews routes
+app.use("/campgrounds", campgroundRoutes);               // set prefix, use campgrounds routes
+app.use("/campgrounds/:id/reviews", reviewRoutes);       // set prefix, use reviews routes
+app.use("/", userRoutes);                                // set preicx, use users routes
 
 
 // HOME PAGE

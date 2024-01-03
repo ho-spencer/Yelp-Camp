@@ -1,3 +1,23 @@
+=======================================================
+January 2, 2024
+    (51) Yelp Camp - Register Form
+=======================================================
+    Setup registration form and necessary routes
+
+    users.js
+        - created file for all users routes (registration, login, logout)
+        - using Express Router
+        - created form render route and form submit route
+        - added try/catch block for any errors when user is attempting to register
+            - use this instead of the default error handler that is already set up
+
+    register.ejs
+        - registration form
+            - included boilerplate layout
+            - has inputs for username, email, password
+            - using same bootstrap validation as the other forms
+
+
 ==============================================================
 January 2, 2024
     (51) Yelp Camp - Auth User Model and Configure Passport
