@@ -1,4 +1,22 @@
 =======================================================
+January 3, 2024
+    (51) Yelp Camp - Login
+=======================================================
+    middleware.js
+        - created file to store middleware (to be able to access from multiple routes in different files)
+        - created isLoggedIn() middleware 
+            - using helper method from Passport -- isAuthenticated()
+            - function checks to make sure user is logged in to access a route
+    
+    campgrounds.js
+        - added isLoggedIn() middleware to "NEW" campground route (must be logged in to access form)
+        - added isLoggedIn() middleware to "POST" campground route (must be logged in to submit form data and create new campground)
+            - user shouldn't be able to submit data if they can't access form
+            - extra layer in case a user tries send a request from somewhere else (ex: Postman)
+        - added isLoggedIn() to the Edit Campground and Delete Campground routes
+
+
+=======================================================
 January 2, 2024
     (51) Yelp Camp - Login
 =======================================================
@@ -12,6 +30,10 @@ January 2, 2024
                     - failureFlash: flash message if there is a login failure
                     - failureRedirect: redirect to a page ("/login") if there is a login faliure
 
+    login.ejs
+        - form to login
+        - includes only username / password fields (no email input to login)
+        
     Currently logging in, does not "keep you logged in". No logged in session yet.
 
 
