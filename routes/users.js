@@ -1,6 +1,6 @@
-// Express
 const express = require("express");
 const router = express.Router();
+const passport = require("passport");
 
 // Catch Async function
 const catchAsync = require("../utilities/catchAsync.js");
@@ -27,6 +27,21 @@ router.post("/register", catchAsync(async (req, res) => {
         res.redirect("/register");
     } 
 }));
+
+// Render Login Form
+router.get("/login", (req, res) => {
+    res.render("users/login.ejs");
+})
+
+/*
+    Submit Form Data
+        - included passport middleware to authenticate
+            - options for this middleware are passed in an object
+*/
+router.post("/login", passport.authenticate("local", { failureFlash: true, failureRedirect: "/login" }), (req, res) => {
+    req.flash("success", "Welcome Back!");
+    res.redirect("/campgrounds");
+});
 
 
 

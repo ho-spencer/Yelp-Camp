@@ -1,5 +1,22 @@
 =======================================================
 January 2, 2024
+    (51) Yelp Camp - Login
+=======================================================
+    Added login form and routes
+
+    users.js
+        - added 2 login routes: serve form and submit data (actual login)
+        - submit data route
+            - included middleware (and middleware options) provided by Passport to authenticate a user
+                - passport.authenticate()
+                    - failureFlash: flash message if there is a login failure
+                    - failureRedirect: redirect to a page ("/login") if there is a login faliure
+
+    Currently logging in, does not "keep you logged in". No logged in session yet.
+
+
+=======================================================
+January 2, 2024
     (51) Yelp Camp - Register Form
 =======================================================
     Setup registration form and necessary routes
