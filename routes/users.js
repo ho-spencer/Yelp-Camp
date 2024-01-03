@@ -14,13 +14,19 @@ router.get("/register", (req, res) => {
 })
 
 // submit registration data
-router.post("/register", catchAsync(async (req, res) => {
+router.post("/register", catchAsync(async (req, res, next) => {
     try {
         const { username, email, password } = req.body;
         const user = new User({ username, email });                        // create a new instance of User
         const registeredUser = await User.register(user, password);        // register user with username, email, password using static method from passport-local-mongoose
-        req.flash("success", "Successfully Registered for Yelp Camp!");
-        res.redirect('/campgrounds');
+
+        req.login(registeredUser, err => {
+            if (err){
+                return next(err);
+            }
+            req.flash("success", "Successfully Registered for Yelp Camp!");
+            res.redirect('/campgrounds');
+        })
     }
     catch (e) {
         req.flash("error", e.message);

@@ -1,5 +1,17 @@
 =======================================================
 January 3, 2024
+    (51) Yelp Camp - Auto Login on Successful Registration
+=======================================================
+    Upated register user route (POST route) to auto login a user if they successfully register.
+
+    user.js
+        - using login() helper method from Passport
+            - pass in the registered user into the method
+            - pass in callback function w/ "err" parameter for any errors
+
+
+=======================================================
+January 3, 2024
     (51) Yelp Camp - currentUser Helper
 =======================================================
     Show/Hide links based on if user is logged in or not.
