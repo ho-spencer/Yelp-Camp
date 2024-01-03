@@ -1,5 +1,21 @@
 =======================================================
 January 3, 2024
+    (51) Yelp Camp - Logout
+=======================================================
+    Added Logout logic.
+
+    users.js
+        - added logout route using Passport's helper method -- logout()
+            - auto added to req object --> req.logout()
+            - Update from Passport now requires callback function to be passed into the method
+
+    navbar.ejs
+        - added login, register, and logout buttons to nav bar
+            - aligned on right side of page
+
+            
+=======================================================
+January 3, 2024
     (51) Yelp Camp - Login
 =======================================================
     middleware.js
