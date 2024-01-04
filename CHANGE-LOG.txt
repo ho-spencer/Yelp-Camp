@@ -1,5 +1,17 @@
 =======================================================
 January 4, 2024
+    (52) Yelp Camp - Authorization Middleware
+=======================================================
+    Create middleware using the logic to check if the author of a campground matches the current user.
+        - function: isAuthor()
+
+    campgrounds.js
+        - added isAuthor to both edit routes (serve from and submit data)
+        - added isAuthor to the delete route
+
+
+=======================================================
+January 4, 2024
     (52) Yelp Camp - Campground Permissions
 =======================================================
     Protect campground routes so requests can't be sent using a workaround (ex: Postman)
@@ -9,7 +21,6 @@ January 4, 2024
         - edit routes (GET and PUT)
             - added logic to protect routes -- checks if author of the campground matches current user
                 - if they match, user can access edit form/submit edits
-
 
 
 =======================================================

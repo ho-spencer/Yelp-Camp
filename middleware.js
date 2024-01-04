@@ -12,7 +12,6 @@ module.exports.isLoggedIn = (req, res, next) => {
     next();
 }
 
-
 /*
     Middleware to transfer the "req.session.returnTo" value to the Express.js res.locals object
 */
