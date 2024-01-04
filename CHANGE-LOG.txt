@@ -1,5 +1,17 @@
 =======================================================
 January 3, 2024
+    (52) Yelp Camp - Show and Hide Edit/Delete Buttons
+=======================================================
+    Update Campground SHOW page to only dipslay edit/delete buttons if current user matches the owner of the campground.
+
+    show.ejs
+        - added logic to display edit/delete buttons ONLY if:
+            1. a user is logged in
+            2. campground owner (author) matches current user
+
+
+=======================================================
+January 3, 2024
     (52) Yelp Camp - Adding Authorization
 =======================================================
     Add authorization so that a new campground / new review is linked to the user that created it.
