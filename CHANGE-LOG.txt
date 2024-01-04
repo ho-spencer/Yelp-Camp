@@ -1,5 +1,33 @@
 =======================================================
 January 3, 2024
+    (52) Yelp Camp - Adding Authorization
+=======================================================
+    Add authorization so that a new campground / new review is linked to the user that created it.
+        - Only that user can edit/delete the campground/review
+    
+    campground.js (campground model)
+        - add an "author" field to campground model
+            - will store the UserID in this field
+        
+    
+    index.js (seeds file)
+        - updated seeds file to include a default author (using a random test account)
+            - got the UserID from the database (db.users.find() --> get ObjectID of the user)
+            - if no author, templates will try to display an author when no campgrounds have any
+    
+    campgrounds.js (campground routes)
+        - SHOW route - updated to .populate() the "author" field
+            - only the User ObjectID is stored in campground model
+            - need to access "username" of the User --> populate allows us to access User fields in the campground model
+        - POST route (add new campground) - updated to populate author field when a user creates a new campground
+            - user already added to req object (req.user) by Passport and route already verifies a user is logged in
+    
+    show.ejs
+        - updated campground SHOW page to display the author (who created the campground)
+
+
+=======================================================
+January 3, 2024
     (51) Yelp Camp - ReturnTo Behavior
 =======================================================
     Currently: If a user (logged out) tries to access a page that requires you to be logged in,
