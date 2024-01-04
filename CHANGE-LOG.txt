@@ -1,7 +1,32 @@
 =======================================================
 January 3, 2024
-    (51) Yelp Camp - Auto Login on Successful Registration
+    (51) Yelp Camp - ReturnTo Behavior
 =======================================================
+    Currently: If a user (logged out) tries to access a page that requires you to be logged in,
+                they will be redirected to the login page. After a successful login,
+                user is NOT redirected to the page they requested intially.
+
+    Goal: Want to redirect user back to the inital page they requested after they login
+
+    middleware.js
+        - isLoggedIn()
+            - when checking if a user is logged in, we also store orginal url/path requested by user into the session
+        - storeReturnTo()
+            - created this middleware function to store the value from req.session.returnTo (contains original URL) into res.locals
+                - this is needed because of a Passport update that clears the session after a successful login
+            - by storing it in res.locals, we will still have access to the original url/path requested after res.session is cleared
+    
+    users.js
+        - updated /login POST route
+            - included storeReturnTo() middleware BEFORE passport.authenticate() -- need to store before passport clears the session
+            - updated redirect() line to redirect to the stored path or a default path
+            - delete returnTo from the session because it's no longer needed after the user is redirected back after loggin in
+
+
+============================================================
+January 3, 2024
+    (51) Yelp Camp - Auto Login on Successful Registration
+============================================================
     Upated register user route (POST route) to auto login a user if they successfully register.
 
     user.js

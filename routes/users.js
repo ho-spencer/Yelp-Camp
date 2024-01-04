@@ -8,6 +8,9 @@ const catchAsync = require("../utilities/catchAsync.js");
 // User Model
 const User = require ("../models/user.js");
 
+// Middleware
+const { storeReturnTo } = require("../middleware.js");
+
 // Render Registration form
 router.get("/register", (req, res) => {
     res.render("users/register.ejs");
@@ -44,9 +47,11 @@ router.get("/login", (req, res) => {
         - included passport middleware to authenticate
             - options for this middleware are passed in an object
 */
-router.post("/login", passport.authenticate("local", { failureFlash: true, failureRedirect: "/login" }), (req, res) => {
+router.post("/login", storeReturnTo, passport.authenticate("local", { failureFlash: true, failureRedirect: "/login" }), (req, res) => {
     req.flash("success", "Welcome Back!");
-    res.redirect("/campgrounds");
+    const redirectUrl = res.locals.returnTo || "/campgrounds";
+    delete req.session.returnTo;                                    // delete returnTo from the session object (don't need it in the session anymore after we saved it to a variable)
+    res.redirect(redirectUrl);
 });
 
 // Logout
