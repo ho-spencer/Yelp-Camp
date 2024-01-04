@@ -1,5 +1,19 @@
 =======================================================
-January 3, 2024
+January 4, 2024
+    (52) Yelp Camp - Campground Permissions
+=======================================================
+    Protect campground routes so requests can't be sent using a workaround (ex: Postman)
+        - ex: someone could send a delete request from postman and delete a campground even if they arent the owner
+
+    campgrounds.js
+        - edit routes (GET and PUT)
+            - added logic to protect routes -- checks if author of the campground matches current user
+                - if they match, user can access edit form/submit edits
+
+
+
+=======================================================
+January 4, 2024
     (52) Yelp Camp - Show and Hide Edit/Delete Buttons
 =======================================================
     Update Campground SHOW page to only dipslay edit/delete buttons if current user matches the owner of the campground.
@@ -11,7 +25,7 @@ January 3, 2024
 
 
 =======================================================
-January 3, 2024
+January 4, 2024
     (52) Yelp Camp - Adding Authorization
 =======================================================
     Add authorization so that a new campground / new review is linked to the user that created it.

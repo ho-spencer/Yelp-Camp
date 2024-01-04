@@ -50,17 +50,29 @@ router.post("/", isLoggedIn, validateCampground, catchAsync(async (req, res, nex
 router.get("/:id/edit", isLoggedIn, catchAsync(async (req, res, next) => {
     const { id } = req.params;
     const campground = await Campground.findById(id);
+    // check to make sure campground exists
     if (!campground) {
         req.flash("error", "ERROR. Can't Find Campground");
         res.redirect("/campgrounds");
     }
+    // check if campground author matches current user
+    if (!campground.author.equals(req.user._id)) {
+        req.flash("error", "You don't have permission to edit!");
+        return res.redirect(`/campgrounds/${campground._id}`);
+    }
+
     res.render("campgrounds/edit.ejs", { campground });
 }));
 
 // EDIT A CAMPGROUND - update data
 router.put("/:id", isLoggedIn, validateCampground, catchAsync(async (req, res, next) => {
     const { id } = req.params;
-    const campground = await Campground.findByIdAndUpdate(id, {...req.body.campground}, { runValidators: true, new: true });
+    const campground = await Campground.findById(id);
+    if (!campground.author.equals(req.user._id)) {
+        req.flash("error", "You don't have permission to edit!");
+        return res.redirect(`/campgrounds/${campground._id}`);
+    }
+    const camp = await Campground.findByIdAndUpdate(id, {...req.body.campground}, { runValidators: true, new: true });
     req.flash("success", "Successfully updated the campground to edit!");
     res.redirect(`/campgrounds/${campground._id}`);
 }));
