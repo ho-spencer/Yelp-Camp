@@ -13,6 +13,7 @@ January 4, 2024
             - msut be logged in to create a review
         - added isLoggedIn and isReviewAuthor middleware to the DELETE route
             - must be logged in AND the owner to delete a review
+        - added line to assign a user (the current user) to a created review
     
     show.ejs
         - added logic to only show review form if a user is logged in
