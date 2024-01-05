@@ -1,5 +1,20 @@
 =======================================================
 January 4, 2024
+    (52) Yelp Camp - Authorization Middleware Refactor
+=======================================================
+    Refactor middleware -- move middleware functions from routes files to middleware.js
+
+    campgrounds.js
+        - moved validateCampground and isAuthor
+            - included ExpressError, JOI campground Schema, Campground model
+    
+    reviews.js
+        - moved validateReview
+            - included JOI review Schmea
+
+
+=======================================================
+January 4, 2024
     (52) Yelp Camp - Authorization Middleware
 =======================================================
     Create middleware using the logic to check if the author of a campground matches the current user.

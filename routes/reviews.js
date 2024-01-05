@@ -13,17 +13,8 @@ const { reviewSchema } = require("../schemas.js");               // require revi
 const Campground = require("../models/campground.js");            // require Campground model
 const Review = require("../models/review.js");                    // require Review model
 
-
-const validateReview = (req, res, next) => {
-    const { error } = reviewSchema.validate(req.body);
-    if (error) {
-        const msg = error.details.map(el => el.message).join(",");
-        throw new ExpressError(400, msg);
-    }
-    else {
-        next();
-    } 
-}
+// Middleware
+const { validateReview } = require("../middleware.js");           // validateReview middleware
 
 // CREATE REVIEW
 router.post("/", validateReview, catchAsync(async (req, res) => {
