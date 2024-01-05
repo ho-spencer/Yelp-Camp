@@ -1,5 +1,38 @@
 =======================================================
 January 4, 2024
+    (52) Yelp Camp - Review Permissions
+=======================================================
+    Protect review routes so that only the "owner" (author) of the review can edit/delete it.
+        - also user needs to be logged in to post a reivew (and see the review form)
+
+    review.js (Review Model)
+        - added "author" property to the reviewSchema (review model)
+        
+    reviews.js (routes)
+        - added isLoggedIn to the POST route (create a review)
+            - msut be logged in to create a review
+        - added isLoggedIn and isReviewAuthor middleware to the DELETE route
+            - must be logged in AND the owner to delete a review
+    
+    show.ejs
+        - added logic to only show review form if a user is logged in
+        - updated review display to show the author of the review
+        - added logic to only show delete button if a user is logged in AND the owner of the review
+
+    campgrounds.js (routes)
+        - upated SHOW campground route to now populate the author of each review
+            - using "nested" populate
+                1. populate ALL the reviews for the campground
+                2. populate the author of each review
+                3. populate the author of the campground
+    
+    middleware.js
+        - created isReviewAuthor
+            - middleware to check if current user is the owner (author) of a review
+
+
+=======================================================
+January 4, 2024
     (52) Yelp Camp - Authorization Middleware Refactor
 =======================================================
     Refactor middleware -- move middleware functions from routes files to middleware.js

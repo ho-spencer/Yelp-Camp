@@ -4,7 +4,8 @@ const ExpressError = require("./utilities/ExpressError.js");            // requi
 const { campgroundSchema, reviewSchema } = require("./schemas.js");     // require campground Joi schema (validation)
 
 // Model
-const Campground = require("./models/campground.js");                   // require Campground model
+const Campground = require("./models/campground.js");
+const Review = require("./models/review.js");
 
 /*
     isLoggedIn - check to make sure a user is logged in
@@ -69,4 +70,17 @@ module.exports.validateReview = (req, res, next) => {
     else {
         next();
     } 
+}
+
+/*
+    isReviewAuthor - check if the current user is the owner (author) of a review
+*/
+module.exports.isReviewAuthor = async (req, res, next) => {
+    const { id, reviewId } = req.params;
+    const review = await Review.findById(reviewId);
+    if (!review.author.equals(req.user._id)) {
+        req.flash("error", "You don't have permission!");
+        return res.redirect(`/campgrounds/${id}`);
+    }
+    next();
 }
