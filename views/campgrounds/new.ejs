@@ -5,7 +5,7 @@
 
         <!-- 6 unit width column, offset by 3 to use the middle (instead of 6 left units)-->
         <div class="col-6 offset-3">
-            <form action="/campgrounds" method="POST" class="validated-form" novalidate>
+            <form action="/campgrounds" method="POST" class="validated-form" enctype="multipart/form-data" novalidate>
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
                     <input type="text" class="form-control" name="campground[title]" id="title" required>
@@ -21,11 +21,12 @@
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="image" class="form-label">Image Url</label>
+                    <!-- <label for="image" class="form-label">Image Url</label>
                     <input type="text" class="form-control" name="campground[image]" id="image" required>
                     <div class="valid-feedback">
                         Valid Input!
-                    </div>
+                    </div> -->
+                    <input type="file" name="image" id="">
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="price">Campground Price</label>

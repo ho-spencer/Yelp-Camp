@@ -14,10 +14,16 @@ const campgrounds = require("../controllers/campgrounds.js");           // requi
 // Middleware
 const { isLoggedIn, validateCampground, isAuthor } = require("../middleware.js");
 
+// Multer
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
 
 router.route("/")
     .get(catchAsync(campgrounds.index))                                                                 // LIST ALL CAMPGROUNDS (campground index)
-    .post(isLoggedIn, validateCampground, catchAsync(campgrounds.createCampground));                    // ADD NEW CAMPGROUND - update data
+    //.post(isLoggedIn, validateCampground, catchAsync(campgrounds.createCampground));                    // ADD NEW CAMPGROUND - update data
+    .post(upload.single("image"), (req, res) => {                                                       // temp route for image upload
+        console.log(req.body, req.file);
+    })
 
 // ADD NEW CAMPGROUND - serve form
 router.get("/new", isLoggedIn, campgrounds.renderNewForm);

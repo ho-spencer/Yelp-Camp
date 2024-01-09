@@ -1,5 +1,27 @@
 =======================================================
 January 8, 2024
+    (54) Yelp Camp - Image Upload (Form Setup & Multer)
+=======================================================
+
+    Installed Multer - npm i Multer
+        - used to parse/handle multipart/form-data encoding type
+
+    new.ejs
+        - update the form encoding type attribute
+            - enctype="multipart/form-data"
+        - add input for a file (replace image url input)
+
+    campgrounds.js (routes)
+        - require multer
+        - intialize multer
+        - Note: added temporary POST route to test multer
+
+    Note: images are currently being saved locaclly to /uploads directory
+        - will eventually update so they are uploaded/saved to Cloudinary
+    
+
+=======================================================
+January 8, 2024
     (53) Yelp Camp - Star Rating Form
 =======================================================
     Use "starability" to have a star rating form.
