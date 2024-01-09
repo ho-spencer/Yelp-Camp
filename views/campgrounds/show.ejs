@@ -1,5 +1,7 @@
 <% layout("layouts/boilerplate.ejs") %>
 
+<link rel="stylesheet" href="/stylesheets/star.css">
+
 <div class="row">
     <!-- Campground Details -->
     <div class="col-6">
@@ -48,8 +50,8 @@
         <% for (let review of campground.reviews) { %>
             <div class="card mb-3">
                 <div class="card-body">
-                    <h5 class="card-title">Rating: <%= review.rating %></h5>
-                    <h6 class="card-subtitle mb-2 text-muted">By: <%= review.author.username %></h6>
+                    <h5 class="card-title"><%= review.author.username %></h5>
+                    <h6 class="card-subtitle starability-result" data-rating="<%= review.rating %>">Rated: <%= review.rating %> stars</h6>
                     <p><%= review.body %></p>
 
                     <!-- form to delete review -->

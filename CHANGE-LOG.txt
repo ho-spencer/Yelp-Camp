@@ -1,5 +1,18 @@
 =======================================================
 January 8, 2024
+    (53) Yelp Camp - Display Star Ratings
+=======================================================
+    Use "starability" to display star ratings in the reivews.
+
+    1. https://github.com/LunarLogic/starability
+    2. using /starability-css/starability-basic.css
+        - added code to /public/stylesheets/star.css
+    3. Linked .css style sheet to show.ejs
+    4. updated reviews display
+
+
+=======================================================
+January 8, 2024
     (53) Yelp Camp - Refactor with router.route()
 =======================================================
     Use router.route(path) to define a single route to handle multiple verbs using the same path.
@@ -11,7 +24,7 @@ January 8, 2024
 
     users.js (routes)
         - grouped routes using the same path
-        
+
 
 ============================================================
 January 8, 2024
