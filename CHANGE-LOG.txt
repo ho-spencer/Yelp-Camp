@@ -1,4 +1,20 @@
 =======================================================
+January 8, 2024
+    (53) Yelp Camp - Refactor Campground Controllers
+=======================================================
+    Refactor various functions to controllers
+        - separate file that exports an object
+            - represents campground controller
+            - has multiple methods
+
+    campgrounds.js (controllers)
+        1. Take function from route (campgrounds.js) and move to controllers file
+            - export function controller file - needed in functions 
+        2. Require controller file in routes file
+        3. Replace function in route with the method name (created in controllers file)
+
+
+=======================================================
 January 4, 2024
     (52) Yelp Camp - Review Permissions
 =======================================================
