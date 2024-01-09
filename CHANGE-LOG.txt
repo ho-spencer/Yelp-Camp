@@ -1,5 +1,20 @@
 =======================================================
 January 8, 2024
+    (53) Yelp Camp - Star Rating Form
+=======================================================
+    Use "starability" to have a star rating form.
+        - replacing current slider functionality
+
+    1. Get code from starability github
+        - fieldset with radio buttons
+    2. update "name" attribute of radio buttons to match our previous syntax
+        - "name=review[rating]" 
+
+    Note: If not stars are selected, rating is set to default value of 1. (temporary)
+
+
+=======================================================
+January 8, 2024
     (53) Yelp Camp - Display Star Ratings
 =======================================================
     Use "starability" to display star ratings in the reivews.
