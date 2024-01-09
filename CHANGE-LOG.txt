@@ -1,3 +1,18 @@
+============================================================
+January 8, 2024
+    (53) Yelp Camp - Refactor Reviews & Users Controllers
+============================================================
+    Refactor reviews routes and users routes to a controller.
+
+    reviews.js (controllers)
+        - require Campground and Reviews model - needed by functions
+        - required review controller in routes file
+
+    users.js (controllers)
+        - required User model
+        - moved user routes to controller file
+    
+
 =======================================================
 January 8, 2024
     (53) Yelp Camp - Refactor Campground Controllers
