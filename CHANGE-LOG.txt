@@ -1,3 +1,18 @@
+=======================================================
+January 8, 2024
+    (53) Yelp Camp - Refactor with router.route()
+=======================================================
+    Use router.route(path) to define a single route to handle multiple verbs using the same path.
+
+    campgrounds.js (routes)
+        - grouped routes that used the same path
+        - moved GET route for serving the form above the "/:id" routes
+            - needs to go before, otherwise "new" will be used as the ":id" variable
+
+    users.js (routes)
+        - grouped routes using the same path
+        
+
 ============================================================
 January 8, 2024
     (53) Yelp Camp - Refactor Reviews & Users Controllers
