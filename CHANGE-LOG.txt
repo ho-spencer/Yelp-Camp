@@ -1,8 +1,26 @@
 =======================================================
 January 8, 2024
+    (54) Yelp Camp - .env setup
+=======================================================
+    - Created .env file to store Cloudinary info
+        - insatlled dotenv (npm package) to access info in .env
+    
+    app.js
+        - added logic to require "dotenv" if running in development environment
+            - needed to access .env variables
+
+    .env
+        - created .env file
+        - stored Cloudinary variables + values - from personal Cloudinary account
+            - CLOUDINARY_CLOUD_NAME
+            - CLOUDINARY_KEY
+            - CLOUDINARY_SECRET
+
+
+=======================================================
+January 8, 2024
     (54) Yelp Camp - Image Upload (Form Setup & Multer)
 =======================================================
-
     Installed Multer - npm i Multer
         - used to parse/handle multipart/form-data encoding type
 
