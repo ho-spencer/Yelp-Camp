@@ -16,7 +16,8 @@ const { isLoggedIn, validateCampground, isAuthor } = require("../middleware.js")
 
 // Multer
 const multer = require("multer");
-const upload = multer({ dest: "uploads/" });
+const { storage } = require("../cloudinary/index.js");                  // require cloudinary storage we set up
+const upload = multer({ storage });                                     // tell multer to upload to the "storage" we created
 
 router.route("/")
     .get(catchAsync(campgrounds.index))                                                                 // LIST ALL CAMPGROUNDS (campground index)

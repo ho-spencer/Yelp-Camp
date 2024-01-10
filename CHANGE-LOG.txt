@@ -1,5 +1,27 @@
 =======================================================
 January 8, 2024
+    (54) Yelp Camp - Upload to Cloudinary Basics
+=======================================================
+    Using npm tool -- "multer storage cloudinary"
+        - installed both "cloudinary" and "multer-storage-cloudinary"
+    
+    index.js ("cloudinary" directory)
+        - created file for cloudinary setup
+        - setup Cloudinary Config
+            - cloud_name, api_key, api_secret --> link to variables we created in .env
+            - "associating" our cloudinary account with this instance
+        - instantiate an instance of CloudinaryStorage
+            - pass in Cloudinary object we configured
+            - add properties - specified folder to upload to in Cloudinary, specified allowed file types
+        - export both the configured Cloudinary instance and the storage
+
+    campgrounds.js (routes)
+        - required the storage we created
+        - update multer upload/store destination to the storage we created
+
+
+=======================================================
+January 8, 2024
     (54) Yelp Camp - .env setup
 =======================================================
     - Created .env file to store Cloudinary info
