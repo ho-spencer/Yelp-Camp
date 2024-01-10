@@ -15,6 +15,7 @@ January 8, 2024
             - CLOUDINARY_CLOUD_NAME
             - CLOUDINARY_KEY
             - CLOUDINARY_SECRET
+        - NOT UPLOADED TO GITHUB (only save on local storage)    
 
 
 =======================================================
