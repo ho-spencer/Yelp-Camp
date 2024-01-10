@@ -16,7 +16,8 @@ module.exports.renderNewForm = (req, res) => {
 // ADD NEW CAMPGROUND - submit data
 module.exports.createCampground = async (req, res, next) => {
     const newCampground = new Campground(req.body.campground);
-    newCampground.author = req.user._id;                                    // set UserID to author field when creating a campground
+    newCampground.images = req.files.map(f => ({ url: f.path, filename: f.filename }));     // map over array (req.files) and set "url" and "filename" property of the newCampground
+    newCampground.author = req.user._id;                                                    // set UserID to author field when creating a campground
     await newCampground.save();
     req.flash("success", "Successfully added a new campground!");
     res.redirect(`/campgrounds/${newCampground._id}`);

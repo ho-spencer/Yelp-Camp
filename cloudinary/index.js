@@ -11,8 +11,10 @@ cloudinary.config({
 // Instantiate Instance of CloudinaryStorage
 const storage = new CloudinaryStorage({
     cloudinary,
-    folder: "YelpCamp",
-    allowedFormats: ["jpeg", "png", "jpg"]
+    params: {
+        folder: "YelpCamp",
+        allowedFormats: ["jpeg", "png", "jpg"]
+    }
 });
 
 // Export the Configured Cloudinary Instance and Storage

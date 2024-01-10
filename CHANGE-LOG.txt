@@ -1,5 +1,41 @@
 =======================================================
-January 8, 2024
+January 9, 2024
+    (54) Yelp Camp - Store Upload Image Links in Mongo
+=======================================================
+    index.js
+        - fixed CloudinaryStorage instance
+            - previously was NOT uploading to the folder we wanted
+            - needed to put "folder" and "allowedFormats" properties in a "params" object
+    
+    campground.js (model)
+        - updated campground model -- "image" property
+            - changed property name: "image" --> "images" (just in case user uploads multiple files)
+            - "images" is now an array 
+                - properties:
+                    - "url" -- cloudinary url --> "path" property from req.files
+                    - "filename" -- used to delete files --> "filename" property from req.files
+    
+    campgrounds.js (routes)
+        - update original POST route (to submit new campground)
+            - added multer middleware (upload.array()) to upload files when form is submitted
+        - TEMP: run validateCampground middleware after multer middleware
+            - multer adds data to req.body and validateCampground depends on req.body
+            - normally we want to validate data first BEFORE uploading the image
+                - In this case -- multer uploads first, then sends us parsed body which is then accessed by validateCampground
+
+    campgrounds.js (controller)
+        - update function (createCampground) for POST route
+            - map over the array added to req.files
+            - create an object with "path" and "file" name for each image
+            - add each object to an array
+            - set array to newCampground.images
+
+    schemas.js
+        - remove validation on image property temporarily (just to test if uploading images work)
+
+
+=======================================================
+January 9, 2024
     (54) Yelp Camp - Upload to Cloudinary Basics
 =======================================================
     Using npm tool -- "multer storage cloudinary"

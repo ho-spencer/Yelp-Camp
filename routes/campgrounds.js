@@ -20,11 +20,9 @@ const { storage } = require("../cloudinary/index.js");                  // requi
 const upload = multer({ storage });                                     // tell multer to upload to the "storage" we created
 
 router.route("/")
-    .get(catchAsync(campgrounds.index))                                                                 // LIST ALL CAMPGROUNDS (campground index)
-    //.post(isLoggedIn, validateCampground, catchAsync(campgrounds.createCampground));                    // ADD NEW CAMPGROUND - update data
-    .post(upload.single("image"), (req, res) => {                                                       // temp route for image upload
-        console.log(req.body, req.file);
-    })
+    .get(catchAsync(campgrounds.index))                                                                                 // LIST ALL CAMPGROUNDS (campground index)
+    .post(isLoggedIn, upload.array("image"), validateCampground, catchAsync(campgrounds.createCampground));             // ADD NEW CAMPGROUND - update data
+
 
 // ADD NEW CAMPGROUND - serve form
 router.get("/new", isLoggedIn, campgrounds.renderNewForm);

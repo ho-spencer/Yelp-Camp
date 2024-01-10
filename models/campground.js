@@ -5,7 +5,12 @@ const Schema = mongoose.Schema;             // create reference to mongoose.Sche
 // Create Campground Schema
 const CampgroundSchema = new Schema({   // normally "const CampgroundSchema = mongoose.Schema({})"
     title: String,
-    image: String,
+    images: [
+        {
+            url: String,
+            filename: String
+        }
+    ],
     price: Number,
     description: String,
     location: String,
