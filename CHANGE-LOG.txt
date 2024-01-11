@@ -19,7 +19,6 @@ January 9, 2024
             2. use spread operator on the images array created from map and push onto campground.images (existing array of images)
 
 
-
 =======================================================
 January 9, 2024
     (54) Yelp Camp - Edit Seed File
