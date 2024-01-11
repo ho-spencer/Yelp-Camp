@@ -1,4 +1,28 @@
 =======================================================
+January 10, 2024
+    (54) Yelp Camp - Cloudinary Virtual Property 
+=======================================================
+    Use cloudinary api to transform images to have a better display.
+
+    campground.js (model)
+        - create an Image Schema
+            - we only want virtual properties on the images, not the campground
+            - nest the Image Schema in the Campground Schema
+                - images: [ImageSchema]
+        - since we have an ImageSchema
+            - has same properties as before -- "url" and "filename"
+            - can set a virtual() on the ImageSchema
+                - has function to update the url for each image, whenever we request an image
+        - when requesting an image, we have access to the new "thumbnail" property
+            - set when creating our virtual -- ImageSchema.virtual("thumbnail").get()
+                - .get() has callback function to update the url
+    
+    edit.ejs
+        - use "thumbnail" property when requesting an image --> img.thumbnail
+            - when we call "thumbnail" it will do the transformation/calculation we set in the function
+
+
+=======================================================
 January 9, 2024
     (54) Yelp Camp - Delete Images Backend
 =======================================================

@@ -2,15 +2,22 @@ const mongoose = require("mongoose");
 const Review = require("./review.js");      // require Review model
 const Schema = mongoose.Schema;             // create reference to mongoose.Schema for future use
 
+
+// Image Schema (for virtual properties)
+const ImageSchema = new Schema({
+    url: String,
+    filename: String
+});
+
+// Virtual Property for Each Image
+ImageSchema.virtual("thumbnail").get(function () {
+    return this.url.replace("/upload", "/upload/w_200");        // "this" refers to each image
+});
+
 // Create Campground Schema
 const CampgroundSchema = new Schema({   // normally "const CampgroundSchema = mongoose.Schema({})"
     title: String,
-    images: [
-        {
-            url: String,
-            filename: String
-        }
-    ],
+    images: [ImageSchema],
     price: Number,
     description: String,
     location: String,
