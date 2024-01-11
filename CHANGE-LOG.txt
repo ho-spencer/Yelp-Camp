@@ -1,5 +1,20 @@
 =====================================================================
 January 9, 2024
+    (54) Yelp Camp - Customize Upload Image/File Button
+=====================================================================
+    Customize the upload file/image button on the New and Edit Form using bootstrap.
+    
+    new.ejs
+        - modified form input (upload file) with bootstrap code styling
+        - moved input to upload files to bottom of form
+
+    edit.ejs
+        - modified form input (upload file) with boostrap code for styling
+        - moved input to upload files to bottom of form
+
+
+=====================================================================
+January 9, 2024
     (54) Yelp Camp - Add Upload Image Functionality to Edit Page
 =====================================================================
     Update Edit Campground form to allow image upload.
