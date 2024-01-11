@@ -1,3 +1,57 @@
+=======================================================
+January 9, 2024
+    (54) Yelp Camp - Delete Images Backend
+=======================================================
+    In req.body.deleteImages, we have access to an array with different file paths of the images we want to delete.
+        - could be empty if no images were selected to delete
+    
+    1. Each Campground as an images array (contains ALL images).
+    2. We have a "deleteImages" array
+        - contains "filename" of any images selected (from checkboxes)
+    3. Only want to delete images from the main array, if they match the filename from "deleteImages"
+
+    campgrounds.js (controllers)
+        - add logic to delete images if there are images to delete --> if (req.body.deleteImages)
+        Logic:
+            await campground.updateOne({$pull: {images: {filename: {$in: req.body.deleteImages}}}});
+
+            - $pull elements from "images" array (main array)
+            - only if the "filename" is $in req.body.deleteImages
+        Note: THIS ONLY DELETES FROM MONGO
+
+    Delete From Cloudinary Server
+        campgrounds.js (controllers)
+            - must require the cloudinary object that we exported from the "cloudinary" directory
+            - use cloudinary method to delete from cloudinary Server
+                - add this method to the delete logic created in the editCampground function
+                - cloudnary.uploader.destroy()
+                
+
+=======================================================
+January 9, 2024
+    (54) Yelp Camp - Delete Images Form Setup
+=======================================================
+    Update Edit form so user can see images (for that campground) and delete (some or all images)
+
+    edit.ejs
+        - add a <div> to the bottom of the form to display all images for the campground
+            - use forEach to access index to loop over the images array
+        - add a checkbox input for each image (from bootstrap)
+            - give each checkbox an id --> "image-#"
+                - number is assigned when looping through array to display images on edit form
+            - set all checkboxes "name" attribute -- "deleteImages[]"
+                - any checkbox that is checked, the "value" (filename property) will be added to "deleteImages" array 
+                - see update for JOI schema
+            - give each checkbox a "value" attribute set to the "filename" property
+                - filename property will be used to delete
+    
+    schemas.js
+        - add "deleteImages" to JOI schema
+    
+    Any checkbox that is checked will have it's "value" (in this case, the image's "filename") added to
+    the deleteImages[] array in req.body
+
+
 =====================================================================
 January 9, 2024
     (54) Yelp Camp - Customize Upload Image/File Button
