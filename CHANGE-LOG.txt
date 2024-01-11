@@ -1,5 +1,20 @@
 =======================================================
 January 9, 2024
+    (54) Yelp Camp - Display Images in a Carousel
+=======================================================
+    show.ejs
+        - added bootstrap code for a carousel (bootstrap docs > components > carousel)
+        - modified bootstrap code to display images we uploaded (to Cloudinary)
+            - need to choose 1 image to display first
+                - this image will have the class of "active" added
+            - use forEach loop to access index of the img array
+                - add "active" class to image at index 0 --> <%= i === 0 ? "active" : "" %>
+                - add ejs syntax and logic INSIDE class= "<logic here>"
+        - added logic to boostrap code to only display carousel controls if there is more than 1 image
+
+
+=======================================================
+January 9, 2024
     (54) Yelp Camp - Store Upload Image Links in Mongo
 =======================================================
     index.js
