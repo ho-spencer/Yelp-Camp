@@ -1,3 +1,32 @@
+=======================================================================
+January 10, 2024
+    (55) Yelp Camp - Adding Maps: Mapbox Setup & Geocoding Locations
+=======================================================================
+    .env
+        - add mapbox token (from account) 
+
+    Using mapbox's node client to geocode -- mapbox-sdk
+        - installed mapbox-sdk (npm i @mapbox/mapbox-sdk)
+
+    campgrounds.js
+        1. Require the mapbox geocode service
+        2. Get mapbox token (from .env file)
+        3. Instantiate a new mapbox geocoding instance and pass our Mapbox token 
+        createCampground method
+            - add geocoder client we created and call forwardGeocode()
+                - set params
+                    - query --> location text from user input on form
+                        - query: req.body.campground.location
+                            - in form fields, we nested the "name" attributes under "campground[]" --> campground[location] for location input
+                    - limit --> number of results to return
+                - need to send() our geoData
+            - Access Coordinates
+                - coords are stored in -- geoData.body.features[0].geometry.coordinates
+                    - geoData --> variable name
+                    - features is an array (size based on the "limit" we set)
+                    - coordinates is saved as [longitude, latitude]
+
+
 =======================================================
 January 10, 2024
     (54) Yelp Camp - Cloudinary Virtual Property 
