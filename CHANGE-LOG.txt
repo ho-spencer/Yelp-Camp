@@ -1,5 +1,22 @@
 =======================================================
 January 9, 2024
+    (54) Yelp Camp - Edit Seed File
+=======================================================
+    Currently, the seed file is seeding images by default from an unsplash collection.
+    Since we updated our campground model to allow image uploads using Cloudinary, this no longer works.
+
+    index.js (seeds)
+        - use 2 images uploaded to Cloudinary as the default images to seed with
+            - set "images" property in seeds file with "url" and "filename" property of each image
+    
+    index.ejs (show all page)
+        - updated image display on show all page (thumbnail of each campground) to display the first image in the default images array
+            - images array is from the seeds file (we set default images)
+            - <%= campground.images[0].url %>
+
+
+=======================================================
+January 9, 2024
     (54) Yelp Camp - Display Images in a Carousel
 =======================================================
     show.ejs
