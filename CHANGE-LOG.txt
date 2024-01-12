@@ -1,5 +1,37 @@
 =======================================================
 January 10, 2024
+    (55) Yelp Camp - Displaying a Map
+=======================================================
+    Using Mapbox GL JS map library to display a map.
+
+    boilerplate.ejs
+        - include CSS and JS file from Mapbox GL JS (https://docs.mapbox.com/mapbox-gl-js/guides/migrate-to-v3/)
+    
+    show.ejs
+        - add map container code from mapbox (same docs link above)
+            <div id="map" style="width: 400px; height: 300px;"></div>
+        - include script file to enable the map
+    
+    Enable Map
+        - use script code given from mapbox (same docs link above)
+        - created separate script file (public/showPageMap.js)
+
+    Note:
+        In the enable map script (showPageMap.js), we set -- mapboxgl.accessToken = "<%- process.env.MAPBOX_TOKEN %>"; 
+        and then include the script in our show.ejs -- <script src="/javascripts/showPageMap.js"></script>
+            - however, when we run our app, ejs won't know that we have ejs syntax in showPageMap.js
+            - the browser would just request the script and run -- would break because it can't access the token
+        
+        To access our map token from showPageMap.js
+            --> show.ejs
+                - create a script and set our mapbox token (from .env) to a variable
+                    const mapToken = "<%- process.env.MAPBOX_TOKEN %>";
+            --> showPageMap.js
+                - we can now set --> mapboxgl.accessToken =  mapToken
+
+
+=======================================================
+January 10, 2024
     (55) Yelp Camp - GeoJSON
 =======================================================
     geoData.body.features[0].geometry --> returns a GeoJSON
@@ -27,7 +59,7 @@ January 10, 2024
     Using mapbox's node client to geocode -- mapbox-sdk
         - installed mapbox-sdk (npm i @mapbox/mapbox-sdk)
 
-    campgrounds.js
+    campgrounds.js (controllers)
         1. Require the mapbox geocode service
         2. Get mapbox token (from .env file)
         3. Instantiate a new mapbox geocoding instance and pass our Mapbox token 

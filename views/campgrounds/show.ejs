@@ -5,6 +5,9 @@
 <div class="row">
     <!-- Campground Details -->
     <div class="col-6">
+        <!-- Mapbox GL JS Map -->
+        <div id="map" style="width: 400px; height: 300px;"></div>
+
         <!-- Bootstrap Carousel -->
         <div id="campgroundCarousel" class="carousel slide">
             <div class="carousel-inner">
@@ -98,3 +101,11 @@
         <% } %>
     </div>    
 </div>
+
+<!-- Set our MapBox Token to a variable, to access in our showPageMap script -->
+<script>
+    const mapToken = "<%- process.env.MAPBOX_TOKEN %>";
+</script>
+
+<!-- Script to Enable the Map -->
+<script src="/javascripts/showPageMap.js"></script>
