@@ -35,8 +35,14 @@ const seedDB = async () => {
         const random1000 = Math.floor(Math.random() * 1000);
         const price = Math.floor(Math.random() * 20) + 10;
         const camp = new Campground({
+            // PERSONAL USER ID
             author: "6595ee6d05f073b9c487e7b5",
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
+            // Seeding with default coordinates (Los Angeles) -- this is for the Map display (location is still random city, state)
+            geometry: { 
+                type: "Point", 
+                coordinates: [ -118.242766, 34.0536916 ]
+            },
             title: `${sample(descriptors)} ${sample(places)}`,
             images: [
                 {

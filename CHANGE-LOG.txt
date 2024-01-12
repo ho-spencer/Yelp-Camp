@@ -1,5 +1,22 @@
 ================================================================
 January 10, 2024
+    (55) Yelp Camp - Fix Campgrounds Index (show all page)
+================================================================
+    Campgrounds index is "broken" because it is looking for campgrounds.images[0].url.
+        - some campgrounds don't have any images
+
+    index.js (views)
+        - add logic when displaying the image
+            - use the image for the campground if there is one (campgrounds.images[0].url)
+            - if no image, display default image (manually set a url)
+    
+    index.js (seeds)
+        - set default geometry for latitude and longitude to seed with (set to LA)
+            - this is for the map display (locations are still seeded with random city, state)
+        
+
+================================================================
+January 10, 2024
     (55) Yelp Camp - Center Map on Campground & Add a Marker
 ================================================================
     Use code from Mapbox to add a marker -- using Marker method
