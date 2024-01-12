@@ -1,3 +1,26 @@
+================================================================
+January 10, 2024
+    (55) Yelp Camp - Center Map on Campground & Add a Marker
+================================================================
+    Use code from Mapbox to add a marker -- using Marker method
+        - https://docs.mapbox.com/mapbox-gl-js/api/markers/#marker
+    
+    Center Map on the Campground
+        - use the same process we did to display a map
+            1. use ejs (in show.ejs) to create a JS variable
+                - this will be the [longitude, latitude] coords from GeoJSON
+            2. use the created JS variable in our script to center the map and add a marker (showPageMap.js)
+                - to add a marker, use Marker() method from Mapbox
+    
+    show.ejs
+        - created JS variable using ejs
+            - used to access coordinates in the script
+    
+    showPageMap.js
+        - added script (code from MapBox) to add a marker to the location of the campground
+        - updated enable map script to be centered on the campground
+
+
 =======================================================
 January 10, 2024
     (55) Yelp Camp - Displaying a Map
