@@ -6,6 +6,9 @@
  <!-- inject content into boilerplate template  -->
 <% layout("layouts/boilerplate.ejs") %> 
 
+    <!-- Cluster Map -->
+    <div id="map" style="width: 100%; height: 500px"></div>
+
     <h1>All Campgrounds</h1>
 
     <% for (let campground of campgrounds) { %>
@@ -32,3 +35,10 @@
             </div>
         </div>
     <% } %>
+
+    <!-- Set our MapBox Token to a variable, to access in our clusterMap script -->
+    <script>
+        const mapToken = "<%- process.env.MAPBOX_TOKEN %>";
+    </script>
+
+    <script src="/javascripts/clusterMap.js"></script>

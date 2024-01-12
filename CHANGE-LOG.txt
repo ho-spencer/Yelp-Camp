@@ -1,5 +1,38 @@
 =======================================================
 January 11, 2024
+    (56) Yelp Camp - Cluster Map & Reseeding Data
+=======================================================
+    Add a cluster map on our campground index page (show all page).
+        - using mapbox
+        - code from mapbox docs: https://docs.mapbox.com/mapbox-gl-js/example/cluster/
+    
+    index.ejs
+        - add a div with id "map" for where we want our map on this page
+            - include in-line style (temporary until a separate stylesheet is created)
+            <div id="map" style="width: 100%; height: 500px"></div>
+        - include clustMap.js script
+    
+    clusterMap.js
+        - created separate script file for the cluster map script
+            - code from mapbox docs
+    
+    Using Personal Mapbox token
+        - Similar to the show page, we setup a js variable using ejs (in index.ejs)
+            - use this variable in our script
+    
+    Reseeding Data
+        - need to reseed data because currently all the campgrounds' geometry (map) is set to the same location
+            - location (city, state) is all random
+            - map location/point is all the SAME (updating this so it matches the city,state location)
+        - We use cities.js to seed the cities
+            - this file also contains the lat/long coordinates of the cities being used to seed
+        
+        index.js (seeds)
+            - update geometry when seeding to use lat/long coordinates from cities.js (instead of hardcoding a lat/long coordinate)
+
+
+=======================================================
+January 11, 2024
     (55) Yelp Camp - Map Popup
 =======================================================
     Add a popup on the map when we click the marker.
@@ -12,6 +45,7 @@ January 11, 2024
         - updated map style
             - added "style" property to the map
                 - code for style from mapbox docs
+
 
 ================================================================
 January 10, 2024

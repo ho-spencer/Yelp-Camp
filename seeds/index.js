@@ -41,7 +41,10 @@ const seedDB = async () => {
             // Seeding with default coordinates (Los Angeles) -- this is for the Map display (location is still random city, state)
             geometry: { 
                 type: "Point", 
-                coordinates: [ -118.242766, 34.0536916 ]
+                coordinates: [ 
+                    cities[random1000].longitude,
+                    cities[random1000].latitude 
+                ]
             },
             title: `${sample(descriptors)} ${sample(places)}`,
             images: [
