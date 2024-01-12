@@ -1,3 +1,18 @@
+=======================================================
+January 11, 2024
+    (55) Yelp Camp - Map Popup
+=======================================================
+    Add a popup on the map when we click the marker.
+     
+    Using Mapbox method -- setPopup()
+
+    showPageMap.js
+        - add mapbox popcode code to our mapbox Marker
+            - code from mapbox docs
+        - updated map style
+            - added "style" property to the map
+                - code for style from mapbox docs
+
 ================================================================
 January 10, 2024
     (55) Yelp Camp - Fix Campgrounds Index (show all page)
