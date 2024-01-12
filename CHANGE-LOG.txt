@@ -1,3 +1,22 @@
+=======================================================
+January 10, 2024
+    (55) Yelp Camp - GeoJSON
+=======================================================
+    geoData.body.features[0].geometry --> returns a GeoJSON
+
+    campground.js (model)
+        - update model to store the GeoJSON data (follow the GeoJSON pattern/format)
+            - type
+                - String, required
+                - must be "Point" (use enum)
+            - coordinates
+                - array of numbers, required
+    
+    campgrounds.js (controllers)
+        - store the GeoJSOn data (geoData.body.features[0].geometry) in the "geometry" property we created
+            - essentially adding it to the newly created Campground
+
+
 =======================================================================
 January 10, 2024
     (55) Yelp Camp - Adding Maps: Mapbox Setup & Geocoding Locations

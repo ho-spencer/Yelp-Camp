@@ -27,12 +27,12 @@ module.exports.createCampground = async (req, res, next) => {
         query: req.body.campground.location,
         limit: 1
     }).send();
-    console.log(geoData.body.features[0].geometry.coordinates);
     const newCampground = new Campground(req.body.campground);
+    newCampground.geometry = geoData.body.features[0].geometry;                             // store GeoJSON under "geometry" property in the newly created Campground
     newCampground.images = req.files.map(f => ({ url: f.path, filename: f.filename }));     // map over array (req.files) and set "url" and "filename" property of the newCampground
     newCampground.author = req.user._id;                                                    // set UserID to author field when creating a campground
     await newCampground.save();
-    //console.log(newCampground.images);
+    console.log(newCampground);
     req.flash("success", "Successfully added a new campground!");
     res.redirect(`/campgrounds/${newCampground._id}`);
 };
