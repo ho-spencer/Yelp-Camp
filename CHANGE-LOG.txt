@@ -1,5 +1,35 @@
 ============================================================
 January 12, 2024
+    (56) Yelp Camp - Custom Popups
+============================================================
+    Mapbox Format
+        Currently, all campground data is stored in an object with the key "features" set to an array of campgrounds (array of objects)
+            - each object has "geometry" and other campground info
+            - Mapbox is expecting another property in each object called "properties" --> this is what is used to display info in the map popup
+    
+    campground.js (model)
+        - create a virtual to have a "properties" property in our Campground Model
+            virtual would be this:  
+                properties: {
+                    popUpMarkup: 
+                }
+        - update the virtual to return a link to the campground show page
+            - include campground description truncated to first 20 characters
+
+        NOTE: By deafult, mongoose doesn't include virtuals in the result object when we convert a document to JSON (in this case, our Campground object -- each individual campground)
+        To include virtuals set this option (from mongoose docs) and pass it into our schema
+            const opts = { toJSON: { virtuals: true }}
+                - each campground object will now have the virtual property "properties" included
+                - can now access properties.popUpMarkup in our Mapbox clusterMap script
+        
+        clusterMap.js
+            - set our popUpMarkup (which will contain a link to the campground show page) to a variable
+                const { popUpMarkup } = e.features[0].properties;
+            - pass "popUpMarkup" into the popup
+
+
+============================================================
+January 12, 2024
     (56) Yelp Camp - Update Cluster Map Code
 ============================================================
     clusterMap.js
@@ -11,7 +41,7 @@ January 12, 2024
                 - less then 10 points: #61A5C2
                 - 10 to >30 points: #468FAF
                 - 30 or more points: #2C7DA0
-            - updated size of circle based on number of points in a cluster
+            - updated size of circle based on number of points in a cluster 
             - code is located where we addLayer() with id: "clusters"
         - update map theme: dark -> light
         - update single point color -- #89C2D9

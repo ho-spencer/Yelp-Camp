@@ -14,6 +14,9 @@ ImageSchema.virtual("thumbnail").get(function () {
     return this.url.replace("/upload", "/upload/w_200");        // "this" refers to each image
 });
 
+// Set option to include virtuals in result object when converting document (the campground data) to JSON
+const opts = { toJSON: { virtuals: true }}
+
 // Create Campground Schema
 const CampgroundSchema = new Schema({   // normally "const CampgroundSchema = mongoose.Schema({})"
     title: String,
@@ -42,6 +45,15 @@ const CampgroundSchema = new Schema({   // normally "const CampgroundSchema = mo
             ref: "Review" 
         }
     ]
+}, opts);
+
+// Virtual property that returns a link to the campground show page -- this refers to the specific campground instance
+// Includes description with first 20 characters
+CampgroundSchema.virtual("properties.popUpMarkup").get(function () {
+    return `
+        <strong><a href="/campgrounds/${this._id}">${this.title}</a><strong>
+        <p>${this.description.substring(0,20)}</p>
+        `
 });
 
 // DELETE ALL ASSOCIATED REVIEWS WHEN A CAMPGROUND IS DELETED
