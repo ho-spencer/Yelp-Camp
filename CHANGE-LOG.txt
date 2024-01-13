@@ -1,3 +1,14 @@
+============================================================
+January 11, 2024
+    (56) Yelp Camp - Add Campground Data to Cluster Map
+============================================================
+    index.ejs
+        - JSON stringify our campground data (all campgrounds) to pass into clusterMap.js script
+            NOTE: Mapbox is expecting our data format to be an object with the key of "features" set to an array of our campground data.
+                    We can follow this format when stringifying our data
+                    const campgrounds = { features: <%- JSON.stringify(campgrounds) %> }
+
+
 =======================================================
 January 11, 2024
     (56) Yelp Camp - Cluster Map & Reseeding Data

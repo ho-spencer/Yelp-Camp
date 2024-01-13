@@ -36,9 +36,14 @@
         </div>
     <% } %>
 
-    <!-- Set our MapBox Token to a variable, to access in our clusterMap script -->
+    <!-- 
+        - Set our MapBox Token to a variable, to access in our clusterMap script 
+        - JSON stringify our campgrounds data -- "campgrounds" not "campground" (because we want all campgrounds in the cluster map)
+            - stored in an object with the key "features" that equals an array of our data (to match expected format from Mapbox)
+    -->
     <script>
         const mapToken = "<%- process.env.MAPBOX_TOKEN %>";
+        const campgrounds = { features: <%- JSON.stringify(campgrounds) %> };
     </script>
 
     <script src="/javascripts/clusterMap.js"></script>
