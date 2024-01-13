@@ -1,5 +1,27 @@
 ============================================================
-January 11, 2024
+January 12, 2024
+    (56) Yelp Camp - Update Cluster Map Code
+============================================================
+    clusterMap.js
+        - code from the Mapbox example has the source name as "earthquakes" --> map.addSource('earthquakes')
+            1. update source name to be "campgrounds"
+            2. update any reference to "source" to be "campgrounds" --> source: "campgrounds"
+        - update cluster properties
+            - updated color based on the number of points in a cluster
+                - less then 10 points: #61A5C2
+                - 10 to >30 points: #468FAF
+                - 30 or more points: #2C7DA0
+            - updated size of circle based on number of points in a cluster
+            - code is located where we addLayer() with id: "clusters"
+        - update map theme: dark -> light
+        - update single point color -- #89C2D9
+    
+    index.js (seeds)
+        - update the amount of campgrounds to seed (50 --> 300)
+
+
+============================================================
+January 12, 2024
     (56) Yelp Camp - Add Campground Data to Cluster Map
 ============================================================
     index.ejs
@@ -10,7 +32,7 @@ January 11, 2024
 
 
 =======================================================
-January 11, 2024
+January 12, 2024
     (56) Yelp Camp - Cluster Map & Reseeding Data
 =======================================================
     Add a cluster map on our campground index page (show all page).
@@ -43,7 +65,7 @@ January 11, 2024
 
 
 =======================================================
-January 11, 2024
+January 12, 2024
     (55) Yelp Camp - Map Popup
 =======================================================
     Add a popup on the map when we click the marker.
