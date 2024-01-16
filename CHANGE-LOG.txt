@@ -1,4 +1,52 @@
 ============================================================
+January 16, 2024
+    (57) Yelp Camp - Styling Home Page
+============================================================
+    Create a simple "Welcome Page" for our YelpCamp using bootstrap and custom css.
+
+    home.ejs
+        - home page template
+        - included boostrap CSS and JS
+        - simple navbar includes links to:
+            - home page
+            - campground index
+            - login/register/logout
+                - logic added to display login/register or logout depending on if a user is logged in or not
+        - intro section
+            - centered on page (vertically and horizontally)
+            - includes title and intro text
+            - button to view campgrounds Index
+        - footer with copygright simple (entity code)
+        - Body 
+            - d-flex: use flexbox container
+            - text-center: center align all text in the body
+            - text-white: text color is white
+            - bg-dark: dark background for the entire body
+            - Main div
+                - d-flex: use flexbox container
+                - w-100, h-100: 100% height, 100% width (of main body)
+                - p-3: 3px padding
+                - mx-auto: margin left/right auto
+                - flex-column: stack items in this div in a column
+                    - simple nav bar and intro content
+                - Navbar Header (h3)
+                    - float-md-left: float on viewports medium or wider - on left side
+                    - mb-0: margin bottom 0px
+                - Simple Navbar
+                    - bootstrap navbar
+                    - center content
+                    - float on viewports medium or wider, on right side
+                - Intro Content
+                    - button to campground index styled with bootstrap
+    
+    home.css (stylesheet)
+        - main container has a 60 view width
+        - body has 100 view height
+            - now vertically and horizontally centered
+        - included background image with gradiant to darken the image using alpha channel (add contrast between image and page content)
+
+    
+============================================================
 January 12, 2024
     (56) Yelp Camp - Custom Popups
 ============================================================
