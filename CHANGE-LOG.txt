@@ -1,5 +1,29 @@
 ============================================================
 January 16, 2024
+    (57) Yelp Camp - Styling Home Page Custom CSS
+============================================================
+    home.css
+        Main Body
+            - set background size (so image doesn't repeat)
+            - set background image position (center of image)
+            - added a shadow on all text
+            - added a box shadow (shadow on edge of page)
+        Nav Links
+            - updated padding, font weight, font color
+            - added margin left
+            - added transparent border
+                - added css to display border when hovering over links
+                - hovered link will also be a slightly lighter color
+            - updated the active link (home page link) to be a different color
+                - to show what link the user is currently on
+        Button to Campground Index
+            - overrode Bootstrap
+            - changed text color to differentiate from background color
+            - removed text shadow on button
+
+
+============================================================
+January 16, 2024
     (57) Yelp Camp - Styling Home Page
 ============================================================
     Create a simple "Welcome Page" for our YelpCamp using bootstrap and custom css.
