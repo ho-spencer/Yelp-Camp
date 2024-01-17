@@ -1,5 +1,20 @@
 ============================================================
 January 16, 2024
+    (57) Yelp Camp - Add Map Controls
+============================================================
+    Add map controls from MapBox.
+
+    clusterMap.js
+        - added map controls
+        - code from MapBox docs
+
+    showPageMap.js
+        - added map controls
+        - code from MapBox docs
+
+
+============================================================
+January 16, 2024
     (57) Yelp Camp - Updating Map Styles
 ============================================================
     Removing inilne map styles on the map containers.
