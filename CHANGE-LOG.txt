@@ -1,5 +1,34 @@
 ============================================================
 January 16, 2024
+    (58) Yelp Camp - Sanitizing HTML with JOI
+============================================================
+    Prevent users from entering any scripts in any input fields.
+
+    schemas.js
+        - define our own method that JOI can use to prevent HTML / scripts from being entered in our input fields
+        
+        Method (code along)
+            - defined an extension on joi.string() called "escapeHTML"
+                - goal is to be able to do --> body: Joi.string().required().escapeHTML() (on the string properties)
+                - "escapeHTML" has a function called "validate"
+                    - JOI calls it with the "value" it receives (input from user)
+                    - using an NPM package -- "sanitize-html"
+                        - sanitizes the html (removes html, script tags from inputs)
+                        - specifies any allowed tags or attributes (in this case, allow nothing)
+                    -  compare the original input (value) with the sanitized output (clean) and return an error if they are not equal (user tried to input html in the input field)
+    
+        - Renamed our original Joi to "BaseJoi"
+        - We can call "extend" on "BaseJoi" (which is just Joi) and pass in our extension we created
+            - set this to "Joi" -- this is used in our validations
+                - "Joi" is now the base version of Joi, extended with the extension created
+                - we can now use "escapeHTML()"
+        
+        Update any input with text in our validation to use escapeHTML().
+            - inputs will now prohibit users from entering HTML in any text input fields
+
+
+============================================================
+January 16, 2024
     (58) Yelp Camp - Mongo Injection
 ============================================================
     Use NPM Package "express-mongo-sanitize" to prevent any prohibited characters in queries made (ex: "$", ".")
