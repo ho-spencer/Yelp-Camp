@@ -1,0 +1,11 @@
+/* cluster map on campground index page */
+#cluster-map {
+    width: 100%;
+    height: 500px;
+}
+
+/* map on show page */
+#map {
+    width: 400px;
+    height: 300px;
+}

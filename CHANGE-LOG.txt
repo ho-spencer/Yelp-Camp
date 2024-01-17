@@ -1,5 +1,28 @@
 ============================================================
 January 16, 2024
+    (57) Yelp Camp - Updating Map Styles
+============================================================
+    Removing inilne map styles on the map containers.
+        - updating cluster map on campgrounds index page and map on show details page
+
+    app.css
+        - created "general" stylesheet for map stylesheets (only 2 updates)
+        - specified width and height for each page, repsectively
+
+    boilerplate
+        - included stylesheet app.css
+
+    index.ejs
+        - removed inline styling
+        - updated map div id to match stylesheet -- id="cluster-map"
+            - css for show page map is using id="map" (both maps are different sizes so need 2 different id's in the stylesheet)
+    
+    cluserMap.js
+        - updated container to be "cluster-map" to match the map id on the tempalte
+    
+
+============================================================
+January 16, 2024
     (57) Yelp Camp - Styling Login Form / Register Form
 ============================================================
     Use Bootstrap to style the login form and register form.
