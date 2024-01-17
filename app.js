@@ -15,6 +15,7 @@ const passport = require("passport");                                   // requi
 const LocalStrategy = require("passport-local");                        // require Local-Passport
 const User = require("./models/user.js");                               // require User model
 const mongoSanitize = require("express-mongo-sanitize");                // require express mongo sanitize
+const helmet = require("helmet");                                       // require Helmet
 
 // Routes
 const campgroundRoutes = require("./routes/campgrounds.js");                 // require campgrounds routes
@@ -42,6 +43,55 @@ app.use(express.urlencoded({ extended: true }));            // access post reque
 app.use(methodOverride('_method'));                         // method override to use put request on form
 app.use(express.static(path.join(__dirname, "public")));    // serve "public" directory (for static assets)
 app.use(mongoSanitize());                                   // mongo sanitize (prevents prohibited characters in req.body, req.params, req.query)
+app.use(helmet());                                          // helmet - includes all middleware that comes with helmet
+
+// Helmet Content Security Policy Specifications
+const scriptSrcUrls = [
+    "https://stackpath.bootstrapcdn.com/",
+    "https://api.tiles.mapbox.com/",
+    "https://api.mapbox.com/",
+    "https://kit.fontawesome.com/",
+    "https://cdnjs.cloudflare.com/",
+    "https://cdn.jsdelivr.net",
+];
+const styleSrcUrls = [
+    "https://kit-free.fontawesome.com/",
+    "https://stackpath.bootstrapcdn.com/",
+    "https://api.mapbox.com/",
+    "https://api.tiles.mapbox.com/",
+    "https://fonts.googleapis.com/",
+    "https://use.fontawesome.com/",
+    "https://cdn.jsdelivr.net",
+];
+const connectSrcUrls = [
+    "https://api.mapbox.com/",
+    "https://a.tiles.mapbox.com/",
+    "https://b.tiles.mapbox.com/",
+    "https://events.mapbox.com/",
+];
+const fontSrcUrls = [];
+// Configure Helmet CSP
+app.use(
+    helmet.contentSecurityPolicy({
+        directives: {
+            defaultSrc: [],
+            connectSrc: ["'self'", ...connectSrcUrls],
+            scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+            styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
+            workerSrc: ["'self'", "blob:"],
+            objectSrc: [],
+            imgSrc: [
+                "'self'",
+                "blob:",
+                "data:",
+                "https://res.cloudinary.com/dlhoipchx/",    // PERSONAL CLOUDINARY NAME 
+                "https://images.unsplash.com/",
+            ],
+            fontSrc: ["'self'", ...fontSrcUrls],
+        },
+    })
+);
+
 
 const sessionConfig = {
     name: "session",

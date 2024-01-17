@@ -1,3 +1,30 @@
+================================================================
+January 17, 2024
+    (58) Yelp Camp - Helmet & Helmet Content Security Policy
+================================================================
+    Using Helmet to to add security by setting HTTP headers.
+
+    Add crossorigin="anonymous" to the following HTML elements in the respective files below
+        - Because of Helmet, images/script elements that are loaded from an external resource/origin (use an external CDN server) can't be loaded from our app. (ex Mapbox, Cloudinary). 
+        index.ejs
+            - added crossorigin="anonymous" to the img element
+
+        show.ejs
+            - added crossorigin="anonymous" to the img element
+        
+        boilerplate.ejs
+            - added crossorigin="anonymous" to the Mapbox link and script element
+    
+    Content Security Policy
+        - helps mitigate XSS attacks
+        - can specify a list of acceptable sources for images, scripts, etc. (where they CAN be loaded/fetched from)
+        - CSP setup / specifications code from video
+        
+        app.js
+            - set up sources for CSP 
+            - configured Helmet CSP with the specifed sources
+
+
 ============================================================
 January 17, 2024
     (58) Yelp Camp - Hiding Errors
