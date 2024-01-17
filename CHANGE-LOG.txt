@@ -1,5 +1,19 @@
 ============================================================
 January 16, 2024
+    (58) Yelp Camp - Mongo Injection
+============================================================
+    Use NPM Package "express-mongo-sanitize" to prevent any prohibited characters in queries made (ex: "$", ".")
+        - prevents prohibited characters in req.body, req.params, req.query
+
+    1. installed express-mongo-sanitize
+    
+    app.js
+        - required express-mongo-sanitize
+        - set up middleware -- app.use(mongoSanitize());
+
+
+============================================================
+January 16, 2024
     (57) Yelp Camp - Add Map Controls
 ============================================================
     Add map controls from MapBox.

@@ -14,7 +14,7 @@ const flash = require("connect-flash");                                 // requi
 const passport = require("passport");                                   // require Passport
 const LocalStrategy = require("passport-local");                        // require Local-Passport
 const User = require("./models/user.js");                               // require User model
-
+const mongoSanitize = require("express-mongo-sanitize");                // require express mongo sanitize
 
 // Routes
 const campgroundRoutes = require("./routes/campgrounds.js");                 // require campgrounds routes
@@ -41,6 +41,7 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));            // access post request's req.body
 app.use(methodOverride('_method'));                         // method override to use put request on form
 app.use(express.static(path.join(__dirname, "public")));    // serve "public" directory (for static assets)
+app.use(mongoSanitize());                                   // mongo sanitize (prevents prohibited characters in req.body, req.params, req.query)
 
 const sessionConfig = { 
     secret: "superfakesecret",
