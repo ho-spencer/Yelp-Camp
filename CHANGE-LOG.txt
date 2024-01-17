@@ -1,5 +1,38 @@
 ============================================================
 January 16, 2024
+    (57) Yelp Camp - Styling Login Form / Register Form
+============================================================
+    Use Bootstrap to style the login form and register form.
+
+    login.ejs
+        Main container
+            - d-flex: flexbox container
+            - justify-content-center: align items in center of main axis (x-axis)
+            - align-items-center: align items in center of cross axis (y-axis)
+            - Using Grid System
+        Card
+            - div takes 6 units and offset by 3 to be centered (medium view size)
+            - div takes 4 units (1/3 of column) and offset by 4 to be centered (xl view size)
+            - card has a shadow
+            - form inside the "card body"
+            - has image at top of card
+            - autofocus on username input
+            - button wrapped in div with class "d-grid" - button spans entire block
+
+    register.ejs
+        - same updates as login.ejs
+        - included email input
+        - autofocused on username
+    
+    new.ejs / edit.ejs
+        - updated form to be responsive for medium view size
+    
+    index.ejs
+        - addes spacing between each campground card
+
+
+============================================================
+January 16, 2024
     (57) Yelp Camp - Styling Home Page Custom CSS
 ============================================================
     home.css

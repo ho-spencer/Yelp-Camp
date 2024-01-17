@@ -1,34 +1,53 @@
 <% layout("layouts/boilerplate.ejs") %>
 
-    <h1>Register</h1>
-    <form action="/register" method="POST" class="validated-form" novalidate>
-        <div class="mb-3">
-            <label class="form-label" for="username">Username</label>
-            <div class="input-group">
-                <input type="text" class="form-control" id="username" name="username" required>
-                <div class="valid-feedback">
-                    Valid Username!
-                </div>
-            </div>
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="email">Email</label>
-            <div class="input-group">
-                <input type="email" class="form-control" id="email" name="email" required>
-                <div class="valid-feedback">
-                    Valid Email!
-                </div>
-            </div>
-        </div>
-        <div class="mb-3">
-            <label class="form-label" for="password">Password</label>
-            <div class="input-group">
-                <input type="password" class="form-control" id="password" name="password" required>
-                <div class="valid-feedback">
-                    Valid Password!
-                </div>
-            </div>
-        </div>
+<div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="row">
+        <!-- center card, responsive based on view/page size -->
+        <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+            <!-- login form inside a bootstrap card -->
+            <div class="card shadow">
+                <!-- image at top of login card -->
+                <img src="https://images.unsplash.com/photo-1541417904950-b855846fe074?q=80&w=2641&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="" class="card-img-top" />
+                
+                <div class="card-body">
+                    <h5 class="card-title">Register</h5>
+                    <form action="/login" method="POST" class="validated-form" novalidate>
+                        
+                        <!-- username input -->
+                        <div class="mb-3">
+                            <label class="form-label" for="username">Username</label>
+                            <!-- username input is autofocused on refresh -->
+                            <input class="form-control" type="text" id="username" name="username" autofocus required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
 
-        <button class="btn btn-success">Register</button>
-    </form>
+                        <!-- email input -->
+                        <div class="mb-3">
+                            <label class="form-label" for="email">Email</label>
+                            <input class="form-control" type="email" id="email" name="email" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+
+                        <!-- password input -->
+                        <div class="mb-3">
+                            <label class="form-label" for="password">Password</label>
+                            <input class="form-control" type="password" id="password" name="password" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <!-- wrapped button in div with d-grid so button spans entire block -->
+                        <div class="d-grid">
+                            <button class="btn btn-success">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
