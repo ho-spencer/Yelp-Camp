@@ -1,5 +1,21 @@
 ============================================================
-January 16, 2024
+January 17, 2024
+    (58) Yelp Camp - Session / Cookies Update
+============================================================
+    Small updates to session / cookies.
+
+    app.js
+        - sessionConfig
+            - update sesionCookie to have "secure: true"
+                - sesion cookie only accessible throught https
+                - currently not using in development (localhost) -- no https
+                    - use for deployment
+            - update session name
+                - "hide" the default name (connect.sid)
+
+
+============================================================
+January 17, 2024
     (58) Yelp Camp - Sanitizing HTML with JOI
 ============================================================
     Prevent users from entering any scripts in any input fields.
@@ -28,7 +44,7 @@ January 16, 2024
 
 
 ============================================================
-January 16, 2024
+January 17, 2024
     (58) Yelp Camp - Mongo Injection
 ============================================================
     Use NPM Package "express-mongo-sanitize" to prevent any prohibited characters in queries made (ex: "$", ".")

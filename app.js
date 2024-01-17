@@ -43,12 +43,14 @@ app.use(methodOverride('_method'));                         // method override t
 app.use(express.static(path.join(__dirname, "public")));    // serve "public" directory (for static assets)
 app.use(mongoSanitize());                                   // mongo sanitize (prevents prohibited characters in req.body, req.params, req.query)
 
-const sessionConfig = { 
+const sessionConfig = {
+    name: "session",
     secret: "superfakesecret",
     resave: false,
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
+        // secure: true
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
