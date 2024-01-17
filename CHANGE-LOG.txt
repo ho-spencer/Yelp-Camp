@@ -1,5 +1,15 @@
 ============================================================
 January 17, 2024
+    (58) Yelp Camp - Hiding Errors
+============================================================
+    Update error template to not show the error stack outside of development mode.
+
+    error.ejs
+        - added logic to only display error stack while in development mode (not production)
+
+
+============================================================
+January 17, 2024
     (58) Yelp Camp - Session / Cookies Update
 ============================================================
     Small updates to session / cookies.
