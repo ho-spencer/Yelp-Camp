@@ -22,6 +22,11 @@ const campgroundRoutes = require("./routes/campgrounds.js");                 // 
 const reviewRoutes = require("./routes/reviews.js");                         // require reviews routes
 const userRoutes = require("./routes/users.js");                             // require users routes
 
+// Mongo Atlas DB URL
+//const dbUrl = process.env.DB_URL;
+
+// mongodb://127.0.0.1:27017/yelp-camp  // use to connect to local DB
+
 // Connect to DB
 mongoose.connect("mongodb://127.0.0.1:27017/yelp-camp")
     .then(() => {

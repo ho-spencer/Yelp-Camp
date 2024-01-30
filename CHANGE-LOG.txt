@@ -1,4 +1,28 @@
 ================================================================
+January 29, 2024
+    (59) Yelp Camp - Deploying: Setting Up Mongo Atlas
+================================================================
+    Set up a production database (separate from local/development database).
+
+    MongoDB Atlas
+        - created cloud database 
+        - use to create a Mongo Database NOT stored on our local machine
+            1. created first user (can read/write to any database)
+            2. whitelist our ip
+            3. connect to cluster
+                Deployment --> Database --> Connect to Cluster --> copied url (connection string) and add to .env file
+                    --> replaced <password> in the url with the password for our first user
+    
+    app.js
+        - save the Mongo Atlas database url (connection string we saved to .env) as a variable (dbUrl)
+            -  update mongoose.connect(mongodb://127.0.0.1:27017/yelp-camp) --> mongoose.connect(dbUrl) to use Atlas DB
+    
+    register.ejs
+        - fixed error in register form
+            updated form action: /login --> /register
+
+
+================================================================
 January 17, 2024
     (58) Yelp Camp - Helmet & Helmet Content Security Policy
 ================================================================
