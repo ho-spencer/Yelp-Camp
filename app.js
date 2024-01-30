@@ -24,10 +24,10 @@ const reviewRoutes = require("./routes/reviews.js");                         // 
 const userRoutes = require("./routes/users.js");                             // require users routes
 
 // Mongo Atlas DB URL
-// const dbUrl = process.env.DB_URL;
+const dbUrl = process.env.DB_URL;
 
 // Use Local Database (use to connect to local database)
-const dbUrl = "mongodb://127.0.0.1:27017/yelp-camp";
+//const dbUrl = "mongodb://127.0.0.1:27017/yelp-camp";
 
 // Connect to DB
 mongoose.connect(dbUrl)
