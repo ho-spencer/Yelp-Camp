@@ -9,6 +9,7 @@ January 30, 2024
             - specifed node version "18.13.0" in the "engines" directive of package.json
             Instructions from Q/A thread: https://www.udemy.com/course/the-web-developer-bootcamp/learn/lecture/39619890#questions/19135598/
 
+    Created branch "deploy" for deploying
 
 ================================================================
 January 29, 2024
