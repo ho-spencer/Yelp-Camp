@@ -1,5 +1,24 @@
 ================================================================
 January 29, 2024
+    (59) Yelp Camp - Using Mongo for Session Store
+================================================================
+    Use Mongo for our session store instead of the default memory store (for express-session).
+
+    app.js
+        - installed connect-mongo
+        - required connect-mongo
+        - created "store"
+        - use MongoStore.create to create the store (use this for the latest version of mongo-connect)
+            - newer version has properties "mongoUrl" and the "crypto/secret" properties
+                - slightly different then video (using old version of mongo-connect)
+        - pass "store" into sessionConfig object
+            - now, our session has a sessionConfig object that has the property "store"
+                - now uses Mongo to store info
+                - mongo shell will now have a "sessions" collection
+
+
+================================================================
+January 29, 2024
     (59) Yelp Camp - Deploying: Setting Up Mongo Atlas
 ================================================================
     Set up a production database (separate from local/development database).

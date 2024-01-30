@@ -16,6 +16,7 @@ const LocalStrategy = require("passport-local");                        // requi
 const User = require("./models/user.js");                               // require User model
 const mongoSanitize = require("express-mongo-sanitize");                // require express mongo sanitize
 const helmet = require("helmet");                                       // require Helmet
+const MongoStore = require("connect-mongo");                            // require connect-mongo (use Mongo for session store)
 
 // Routes
 const campgroundRoutes = require("./routes/campgrounds.js");                 // require campgrounds routes
@@ -23,12 +24,13 @@ const reviewRoutes = require("./routes/reviews.js");                         // 
 const userRoutes = require("./routes/users.js");                             // require users routes
 
 // Mongo Atlas DB URL
-//const dbUrl = process.env.DB_URL;
+// const dbUrl = process.env.DB_URL;
 
-// mongodb://127.0.0.1:27017/yelp-camp  // use to connect to local DB
+// Use Local Database (use to connect to local database)
+const dbUrl = "mongodb://127.0.0.1:27017/yelp-camp";
 
 // Connect to DB
-mongoose.connect("mongodb://127.0.0.1:27017/yelp-camp")
+mongoose.connect(dbUrl)
     .then(() => {
         console.log("MONGO CONNECTION OPEN");
     })
@@ -97,8 +99,22 @@ app.use(
     })
 );
 
+// Use Mongo for session store -  create store
+const store = MongoStore.create({
+    mongoUrl: dbUrl, 
+    touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret: "superfakesecret"
+    }
+});
+
+// 
+store.on("error", function(e) {
+    console.log("SESSION STORE ERROR", e);
+})
 
 const sessionConfig = {
+    store,                      // pass Mongo store into sessionConfig
     name: "session",
     secret: "superfakesecret",
     resave: false,
