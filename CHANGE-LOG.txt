@@ -13,6 +13,16 @@ January 30, 2024
     Instructions for Deploying with Render: https://www.udemy.com/course/the-web-developer-bootcamp/learn/lecture/39619890#questions
         - also Render_Deploy_Instructions.txt
 
+    Specified environment variables in Render.
+
+    app.js
+        - updated database url (dbURL) to be the MongoDB Atlas URL or our Local DB
+        - updated "secret" to be "process.env.SECRET || "superfakesecret""
+            - production secret or devleopment temp secret
+                - production secret will use Render environment variable set
+            - updated MongoDB Atlas "store" to use "secret" variable
+            - updated sessionConfig to use "secret" variable
+
 ================================================================
 January 29, 2024
     (59) Yelp Camp - Using Mongo for Session Store

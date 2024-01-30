@@ -24,10 +24,13 @@ const reviewRoutes = require("./routes/reviews.js");                         // 
 const userRoutes = require("./routes/users.js");                             // require users routes
 
 // Mongo Atlas DB URL
-const dbUrl = process.env.DB_URL;
+//const dbUrl = process.env.DB_URL;
 
 // Use Local Database (use to connect to local database)
 //const dbUrl = "mongodb://127.0.0.1:27017/yelp-camp";
+
+// Set Database url to Mongo Atlas DB OR local DB
+const dbUrl = process.env.DB_URL || "mongodb://127.0.0.1:27017/yelp-camp"
 
 // Connect to DB
 mongoose.connect(dbUrl)
@@ -99,12 +102,15 @@ app.use(
     })
 );
 
+// Secret set to production secret or developement secret
+const secret = process.env.SECRET || "superfakesecret";
+
 // Use Mongo for session store -  create store
 const store = MongoStore.create({
     mongoUrl: dbUrl, 
     touchAfter: 24 * 60 * 60,
     crypto: {
-        secret: "superfakesecret"
+        secret
     }
 });
 
@@ -116,7 +122,7 @@ store.on("error", function(e) {
 const sessionConfig = {
     store,                      // pass Mongo store into sessionConfig
     name: "session",
-    secret: "superfakesecret",
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
