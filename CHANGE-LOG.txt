@@ -1,4 +1,16 @@
 ================================================================
+January 30, 2024
+    (59) Yelp Camp - Deploying w/ Render
+================================================================
+    Following text document to setup and deploy with Render.
+
+    package.json
+        - specifed Node.js version 18 in this file
+            - specifed node version "18.13.0" in the "engines" directive of package.json
+            Instructions from Q/A thread: https://www.udemy.com/course/the-web-developer-bootcamp/learn/lecture/39619890#questions/19135598/
+
+
+================================================================
 January 29, 2024
     (59) Yelp Camp - Using Mongo for Session Store
 ================================================================
